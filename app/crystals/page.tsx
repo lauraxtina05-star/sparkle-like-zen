@@ -1,0 +1,13 @@
+import Image from 'next/image';
+import {Footer, Header} from '../components';
+
+const etsy='https://www.etsy.com/shop/ShopSparkleLikeZen?etsrc=sdt';
+const whatsapp='https://wa.me/17862018993?text=Hi%20Zen!%20I%E2%80%99d%20love%20help%20choosing%20a%20crystal.';
+
+export default function Crystals(){return <main><Header dark/>
+  <section className="crystals-hero"><div className="crystals-hero-image"><Image src="/images/crystal-vendor.JPG" alt="Zen with a colorful collection of crystals" fill priority sizes="(max-width:850px) 100vw, 54vw"/></div><div className="crystals-hero-copy reveal"><p className="eyebrow">Crystal experiences</p><h1>Choose with intention.</h1><p>Crystals can support a practice, mark a season, or simply bring beauty into a space. The power always remains within.</p><div className="actions"><a className="button button-accent" href={etsy}>Shop on Etsy ↗</a><a className="text-link" href={whatsapp}>Ask Me for Guidance →</a></div></div></section>
+  <section className="crystal-concierge"><div className="reveal"><p className="eyebrow">Crystal Concierge</p><h2>Guidance that begins within.</h2><p>Instead of choosing by trend or promise, I begin with what is present. I offer practical education and thoughtful recommendations for selecting a piece that feels aligned with an existing practice.</p><ul><li>Personalized crystal guidance</li><li>Crystal education + workshops</li><li>Curated pieces + personal selections</li></ul></div><div className="crystal-vendor-image image-reveal"><Image src="/images/crystal-grid.JPG" alt="A warm arrangement of crystals centered around a heart stone" fill sizes="(max-width:850px) 100vw, 48vw"/></div></section>
+  <section className="crystal-detail"><div className="crystal-detail-image image-reveal"><Image src="/images/pink-crystal.JPG" alt="A luminous pink crystal held in sunlight" fill sizes="(max-width:850px) 100vw, 42vw"/></div><div className="reveal"><p className="eyebrow">A personal selection</p><h2>Let curiosity lead.</h2><p>You do not need to know every name or meaning before you begin. Notice what draws you in, ask better questions, and choose what you will actually use with care.</p><a className="button" href={etsy}>Explore the Etsy shop</a></div></section>
+  <section className="simple-cta"><p className="eyebrow">A little direction</p><h2>Tell me what is moving through life right now.</h2><a className="button button-accent" href={whatsapp}>Start a Crystal Conversation</a></section>
+  <Footer/>
+</main>}
