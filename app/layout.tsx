@@ -9,7 +9,7 @@ const geistSans = Geist({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://sparklelikezen.com'),
-  title: 'Sparkle Like Zen | The Sparkle Experience',
+  title: 'Sparkle Like Zen | The Inner Temple',
   description: 'Private spiritual support, circles, events, and crystal experiences with Zen.',
   openGraph: {
     title: 'Sparkle Like Zen',
