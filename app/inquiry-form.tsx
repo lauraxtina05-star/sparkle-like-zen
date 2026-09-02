@@ -1,16 +1,18 @@
 'use client';
 
-import {FormEvent, useState} from 'react';
+import {FormEvent, useRef, useState} from 'react';
 
 type Status = 'idle'|'sending'|'success'|'error';
 
 function useFormspree(endpoint: string) {
   const [status, setStatus] = useState<Status>('idle');
+  const sending = useRef(false);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (status === 'sending') return;
+    if (sending.current) return;
     const form = event.currentTarget;
+    sending.current = true;
     setStatus('sending');
     try {
       const response = await fetch(endpoint, {
@@ -23,6 +25,8 @@ function useFormspree(endpoint: string) {
       setStatus('success');
     } catch {
       setStatus('error');
+    } finally {
+      sending.current = false;
     }
   }
 
@@ -70,6 +74,27 @@ export function EventInquiryForm() {
     <button className="button button-accent" type="submit" disabled={status === 'sending'}>{status === 'sending' ? 'Sending…' : 'Plan a Private Experience'}</button>
     <div className="form-status" aria-live="polite">
       {status === 'success' && <p className="form-success">Thank you. I received your inquiry and will be in touch soon.</p>}
+      {status === 'error' && <p className="form-error">Something went wrong while sending your inquiry. Please try again or email info@sparklelikezen.com.</p>}
+    </div>
+  </form>;
+}
+
+export function CrystalInquiryForm() {
+  const endpoint = 'https://formspree.io/f/mvkorrra';
+  const {status, submit} = useFormspree(endpoint);
+
+  return <form action={endpoint} method="post" onSubmit={submit} aria-busy={status === 'sending'}>
+    <input type="hidden" name="inquiry_type" value="Crystal Concierge"/>
+    <input type="hidden" name="_subject" value="New Sparkle Like Zen Crystal Concierge Inquiry"/>
+    <label>Name<input name="name" autoComplete="name" required/></label>
+    <label>Email<input name="email" type="email" autoComplete="email" required/></label>
+    <label>What are you looking for support with?<textarea name="support" rows={3} required/></label>
+    <label>What kind of crystal support are you looking for?<select name="support_type" defaultValue="" required><option value="" disabled>Select one</option><option>A specific crystal</option><option>A curated selection</option><option>General crystal guidance</option><option>Crystal education / workshop</option><option>Not sure yet</option></select></label>
+    <label>Budget range <span>(optional)</span><input name="budget"/></label>
+    <label>Message <span>(optional)</span><textarea name="message" rows={4}/></label>
+    <button className="button button-accent" type="submit" disabled={status === 'sending'}>{status === 'sending' ? 'Sending…' : 'Send My Crystal Inquiry'}</button>
+    <div className="form-status" aria-live="polite">
+      {status === 'success' && <p className="form-success">Thank you. I received your crystal inquiry and will be in touch soon.</p>}
       {status === 'error' && <p className="form-error">Something went wrong while sending your inquiry. Please try again or email info@sparklelikezen.com.</p>}
     </div>
   </form>;
