@@ -436,3 +436,43 @@ form>.button{margin-top:32px}
     text-wrap:balance;
   }
 }
+
+/* Private Events hero: "Tell me what is taking shape." was rendering at 14vw
+   (~52px, four lines at 375px). Drop it to a viewport-relative clamp so it
+   still reads editorial but settles inside the 24px-gutter content width at
+   320-430px. The desktop rule (.event-hero h1, ~line 51) is untouched. */
+@media(max-width:850px){
+  .event-hero h1{
+    font-size:clamp(38px,calc(11vw - 3px),82px);
+    line-height:.95;
+    overflow-wrap:normal;
+    word-break:normal;
+  }
+}
+
+/* Shared eyebrow -> heading spacing. Some sections left the heading with no
+   margin-top, so the small red eyebrow sat flush against the serif headline;
+   others ran as high as 32px. One rule normalises the gap to an intentional,
+   consistent band: ~20px desktop, ~16px mobile. */
+.eyebrow + h1,
+.eyebrow + h2,
+.eyebrow + h3,
+.belief .eyebrow + h2{
+  margin-top:20px;
+}
+@media(max-width:850px){
+  .eyebrow + h1,
+  .eyebrow + h2,
+  .eyebrow + h3,
+  .immersive-home .belief .eyebrow + h2{
+    margin-top:16px;
+  }
+}
+/* .world-title lays the eyebrow beside (desktop) or above (mobile) the heading
+   inside a grid that already owns the gap, so let that gap do the spacing. */
+.world-title .eyebrow + h2{
+  margin-top:0;
+}
+@media(max-width:850px){
+  .immersive-home .world-title{gap:16px}
+}
