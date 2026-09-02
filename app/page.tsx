@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import {Footer, Header} from './components';
-import {SignupPopup} from './signup-popup';
 
 const whatsapp='https://wa.me/17862018993?text=Hi%20Zen!%20I%20found%20you%20through%20the%20Sparkle%20Like%20Zen%20website%20and%20I%E2%80%99d%20love%20to%20learn%20more%20about%20working%20together.';
 const animalWA='https://wa.me/17862018993?text=Hi%20Zen!%20I%E2%80%99d%20love%20to%20learn%20more%20about%20Reiki%20for%20my%20fur%20baby.';
@@ -25,6 +24,5 @@ export default function Home(){return <main className="immersive-home"><Header/>
   <section className="zen-and-pets"><article className="zen-intro"><div className="zen-photo"><Image src="/images/about-pic.JPG" alt="Zen smiling warmly" fill sizes="(max-width:850px) 100vw, 38vw"/></div><div><p className="eyebrow">Meet me</p><h2>Hi, I’m Zen.</h2><p>Life is always teaching me something, and I genuinely love learning. I’m always exploring new practices, asking questions, and finding ways to deepen what I know. Some of that is for me, and some becomes part of how I care for my clients and community. I listen first, then choose what might actually help.</p><a className="button" href="/about">Read My Story</a></div></article><article className="pet-support"><div><p className="eyebrow">A little extra love</p><h3>Healing for the fur babies.</h3><p>I offer gentle remote or mobile Reiki support where each animal already feels safe.</p><a className="text-link" href={animalWA}>Explore Animal Reiki →</a></div><div className="pet-photo"><Image src="/images/dog-reiki.JPG" alt="A joyful spotted puppy in the grass" fill sizes="320px"/></div></article></section>
 
   <section className="community-home" id="community"><Image className="community-crystal" src="/images/crystal-watercolor-rose.png" alt="" width={700} height={700}/><div className="reveal"><p className="eyebrow">Notes from my world</p><h2>A little more quiet, curiosity, and connection.</h2><p>I share new circles, reflective notes, crystal guidance, and thoughtful offerings without filling the inbox.</p></div><div className="ml-embedded" data-form="wj0c5G"></div></section>
-  <SignupPopup/>
   <Footer/>
 </main>}
