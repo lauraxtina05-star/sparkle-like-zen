@@ -137,3 +137,67 @@ footer{position:relative;isolation:isolate;background:var(--rose);overflow:hidde
 .crystal-concierge,.crystal-detail,.crystal-cta{position:relative;overflow:hidden;isolation:isolate}img.crystal-art{position:absolute;pointer-events:none;z-index:-1;min-height:0!important;margin:0!important;border:0!important;background:none!important;object-fit:contain;width:min(470px,38vw);height:auto;opacity:.16}.crystal-art-amethyst{left:-120px;top:-50px;transform:rotate(-10deg)}.crystal-art-quartz{right:-120px;top:25px;transform:rotate(12deg)}.crystal-art-jade{left:-85px;bottom:-130px;transform:rotate(-9deg)}
 @media(max-width:850px){.community-home{grid-template-columns:1fr;padding:90px 24px}.community-home form{border-left:0;border-top:1px solid var(--gold);padding:35px 0 0}.community-crystal{width:430px;right:-190px;bottom:-160px}.signup-popover{left:16px;right:16px;bottom:16px;width:auto;padding:34px 24px 26px}.signup-popover h2{font-size:40px}.inquiry-vertical form{margin-top:45px}.events-callout{align-items:start}img.crystal-art{width:330px;opacity:.12}.crystal-art-amethyst{left:-150px}.crystal-art-quartz{right:-160px}.crystal-art-jade{left:-150px}.site-header .brand img{width:54px;height:54px}.footer-brand img{width:92px;height:92px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,.image-reveal,.signup-popover{animation:none}.signature-atmosphere,.gather-atmosphere,.crystal-atmosphere,.belief-orbit,.quote-celestial{animation:none!important;transform:none!important}img{transition:none}}
+
+/* Unified CTA system */
+.button{
+  min-height:48px;
+  padding:13px 22px;
+  border-radius:18px;
+  font-size:12px;
+  font-weight:650;
+  line-height:1.2;
+  letter-spacing:.045em;
+  white-space:nowrap;
+}
+.button-accent{background:var(--rose);border-color:var(--rose);color:var(--ink)}
+.button-light{background:color-mix(in srgb,var(--ivory) 94%,transparent);border-color:var(--gold);color:var(--ink)}
+.actions{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  flex-wrap:wrap;
+  gap:14px 22px;
+  margin:32px 0 0;
+}
+.actions .text-link{display:inline-flex;align-items:center;min-height:48px;padding:12px 1px;white-space:nowrap}
+.simple-cta .actions{justify-content:center}
+.zen-intro>div:last-child>.button,
+.simple-cta>.button,
+.crystal-detail>.reveal>.button,
+.events-empty>.button,
+.event-card>.button,
+form>.button{margin-top:32px}
+.community-signup form>.button{margin-top:0}
+.simple-cta>.button{margin-inline:auto}
+.starfish-crystal img{object-fit:cover;object-position:center 52%}
+
+@media(max-width:850px){
+  .site-header{
+    height:calc(82px + env(safe-area-inset-top));
+    padding-top:calc(8px + env(safe-area-inset-top));
+    padding-bottom:8px;
+  }
+  .site-header .button-small{min-height:42px;padding:10px 13px;font-size:10px}
+  .actions{justify-content:center;gap:11px 16px;margin-top:28px}
+  .actions .button{min-width:min(230px,100%)}
+  .actions .text-link{justify-content:center}
+  .art-hero-copy .actions,
+  .page-hero>div:first-child .actions,
+  .crystals-hero-copy .actions{justify-content:center}
+  .zen-intro>div:last-child>.button,
+  .simple-cta>.button,
+  .crystal-detail>.reveal>.button,
+  .events-empty>.button,
+  .event-card>.button,
+  form>.button{display:flex;width:max-content;max-width:100%;margin:28px auto 0}
+  .community-signup form>.button{margin-top:4px}
+  .crystal-detail-image.starfish-crystal{min-height:520px;border-radius:20px 210px 20px 20px}
+}
+
+@media(max-width:430px){
+  .button{min-height:46px;padding:12px 18px;font-size:11px}
+  .actions{flex-direction:column;align-items:center;gap:8px;margin-top:26px}
+  .actions .button{width:auto;max-width:100%;min-width:min(220px,100%)}
+  .actions .text-link{min-height:44px;text-align:center;white-space:normal}
+  .crystal-detail-image.starfish-crystal{min-height:440px}
+}
