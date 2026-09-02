@@ -530,3 +530,174 @@ form>.button{margin-top:32px}
 .story-copy p + p {
   margin-top: 1.25rem;
 }
+
+/* ---------------------------------------------------------------------------
+   MailerLite embedded form ("Notes from my world" newsletter section).
+
+   MailerLite injects its own markup + a scoped <style> (rooted at the form id
+   #mlb2-45508499, form "wj0c5G", account 2608015). Those rules use an id
+   selector + !important, so the overrides below lead with that id and add
+   the section classes to land at a higher specificity. If the form is ever
+   rebuilt in MailerLite the numeric id changes and this block needs updating.
+   --------------------------------------------------------------------------- */
+.community-home .ml-embedded{
+  width:100%;
+  border-left:1px solid var(--gold);
+  padding-left:clamp(25px,5vw,60px);
+  position:relative;
+  z-index:2;
+}
+
+/* strip the MailerLite card so it sits inside our layout */
+.community-home #mlb2-45508499.ml-form-embedContainer,
+.community-home #mlb2-45508499 .ml-form-align-center,
+.community-home #mlb2-45508499 .ml-form-embedWrapper,
+.community-home #mlb2-45508499 .ml-form-embedWrapper.embedForm,
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  margin:0!important;
+  padding:0!important;
+  max-width:none!important;
+  width:100%!important;
+  font-family:inherit!important;
+}
+/* the section already has its own eyebrow + headline + intro line */
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent{display:none!important}
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody form.ml-block-form{
+  display:block!important;
+  gap:0!important;margin:0!important;padding:0!important;border:0!important;max-width:none!important;
+}
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent{margin:0!important;padding:0!important}
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow{margin:0 0 18px!important;padding:0!important;width:100%!important}
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-last-item{margin-bottom:18px!important}
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-field-group{width:100%!important}
+
+/* text inputs → site underline style (globals input rule) */
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input.form-control,
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input.form-control:focus{
+  width:100%!important;
+  box-sizing:border-box!important;
+  border:0!important;
+  border-bottom:1px solid var(--gold)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  padding:13px 4px!important;
+  height:auto!important;
+  min-height:0!important;
+  color:var(--ink)!important;
+  font-family:inherit!important;
+  font-size:16px!important;
+  line-height:1.5!important;
+  box-shadow:none!important;
+  transition:border-color .2s ease!important;
+}
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input.form-control:focus{border-bottom-color:var(--red)!important;outline:none!important}
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input.form-control::placeholder{
+  color:color-mix(in srgb,var(--ink) 55%,transparent)!important;opacity:1!important;font-family:inherit!important;
+}
+
+/* required consent line — MailerLite keeps its own checkbox mark; just re-skin the text + spacing */
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow{margin:2px 0 20px!important;padding:0!important}
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description,
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description p,
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow p{
+  margin:0!important;
+  font-family:inherit!important;
+  font-size:12px!important;
+  line-height:1.5!important;
+  letter-spacing:0!important;
+  color:color-mix(in srgb,var(--ink) 70%,transparent)!important;
+}
+/* MailerLite's real checkbox is opacity:0/absolute; keep its box from stretching */
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type=checkbox]{
+  width:18px!important;
+  max-width:18px!important;
+  height:18px!important;
+}
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before{
+  border-color:var(--gold)!important;
+  background:transparent!important;
+}
+
+/* submit button → .button.button-accent (leave display of the .loading button
+   to MailerLite so its spinner still toggles) */
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit{margin:2px 0 0!important}
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary,
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.loading{
+  width:auto!important;
+  min-width:min(244px,100%)!important;
+  min-height:48px!important;
+  padding:13px 22px!important;
+  border:1px solid var(--rose)!important;
+  border-radius:18px!important;
+  background:var(--rose)!important;
+  background-color:var(--rose)!important;
+  color:var(--ink)!important;
+  font-family:inherit!important;
+  font-size:12px!important;
+  font-weight:650!important;
+  letter-spacing:.045em!important;
+  line-height:1.2!important;
+  text-transform:none!important;
+  box-shadow:none!important;
+  transition:.3s ease!important;
+  cursor:pointer!important;
+}
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary:hover{
+  background:var(--red)!important;
+  background-color:var(--red)!important;
+  color:var(--ivory)!important;
+  transform:translateY(-2px)!important;
+}
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.loading{opacity:.85!important;cursor:wait!important}
+
+/* success + inline error states */
+.community-home #mlb2-45508499 .ml-form-successBody{padding:0!important;background:transparent!important}
+.community-home #mlb2-45508499 .ml-form-successBody .ml-form-successContent{text-align:left!important}
+.community-home #mlb2-45508499 .ml-form-successBody .ml-form-successContent h4{
+  font-family:'Romans Story',Georgia,serif!important;
+  font-weight:400!important;
+  color:var(--red)!important;
+  font-size:clamp(28px,4vw,40px)!important;
+  line-height:1!important;
+  margin:0 0 10px!important;
+}
+.community-home #mlb2-45508499 .ml-form-successBody .ml-form-successContent p{
+  font-family:inherit!important;
+  font-size:14px!important;
+  line-height:1.6!important;
+  color:var(--ink)!important;
+  margin:0!important;
+}
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-error input.form-control,
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-error input.form-control{border-bottom-color:var(--red)!important}
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-error,
+.community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody label.error{
+  color:var(--red)!important;
+  font-family:inherit!important;
+  font-size:12px!important;
+  margin-top:6px!important;
+  display:block!important;
+}
+
+@media(max-width:850px){
+  .community-home .ml-embedded{
+    border-left:0;
+    border-top:1px solid var(--gold);
+    padding:35px 0 0;
+  }
+  .community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit{text-align:center!important}
+  .community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button,
+  .community-home #mlb2-45508499 .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary{
+    width:min(244px,100%)!important;
+    margin:4px auto 0!important;
+  }
+}
