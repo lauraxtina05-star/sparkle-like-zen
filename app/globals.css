@@ -523,3 +523,10 @@ form>.button{margin-top:32px}
   .crystal-inquiry{padding:82px 24px}
   .crystal-inquiry form{margin-top:38px;padding-top:32px}
 }
+
+/* About story: real spacing between consecutive paragraphs. `p + p` leaves the
+   larger blockquote margins untouched (a paragraph after the blockquote is not
+   preceded by a paragraph). */
+.story-copy p + p {
+  margin-top: 1.25rem;
+}
