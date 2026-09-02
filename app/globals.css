@@ -217,11 +217,15 @@ form>.button{margin-top:32px}
     height:auto;
   }
   .immersive-home .art-hero-copy{
-    left:clamp(14px,5vw,22px);
-    right:clamp(14px,5vw,22px);
+    box-sizing:border-box;
+    width:min(calc(100% - 32px),650px);
+    left:50%;
+    right:auto;
     top:42%;
     max-width:none;
+    margin:0;
     padding:clamp(21px,6vw,27px) clamp(17px,5vw,23px);
+    transform:translate(-50%,-50%);
   }
   .immersive-home .art-hero h1{
     font-size:clamp(40px,12vw,54px);
@@ -341,7 +345,7 @@ form>.button{margin-top:32px}
 
 @media(max-width:340px){
   .immersive-home .art-hero{min-height:735px}
-  .immersive-home .art-hero-copy{left:10px;right:10px;padding-inline:16px}
+  .immersive-home .art-hero-copy{width:calc(100% - 20px);left:50%;right:auto;padding-inline:16px}
   .immersive-home .art-hero h1{font-size:38px}
   .immersive-home .belief{padding-inline:18px}
   .immersive-home .belief h2{font-size:45px;letter-spacing:-.05em}
