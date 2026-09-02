@@ -95,3 +95,34 @@ footer{position:relative;isolation:isolate;background:var(--rose);overflow:hidde
 .crystal-concierge{grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);align-items:start}.crystal-concierge>div:first-child{padding-top:55px}.crystal-vendor-image{min-height:720px;border-radius:260px 22px 22px 22px}.crystal-vendor-image img{object-position:center}.process{grid-template-columns:1fr;padding:110px clamp(24px,9vw,140px);background:linear-gradient(155deg,color-mix(in srgb,var(--rose) 35%,var(--ivory)),var(--ivory))}.process-photo{min-height:680px;max-width:1100px;width:100%;border-radius:260px 24px 24px 24px;overflow:hidden}.process>div:last-child{max-width:800px;margin:70px 0 0 auto}.process:after{display:none}
 @media(max-width:850px){.art-hero-copy{max-width:none}.art-hero h1{font-size:clamp(42px,12vw,56px);overflow-wrap:normal}.signature,.gather,.crystal-experience{padding:90px 24px}.signature-atmosphere,.gather-atmosphere,.crystal-atmosphere{opacity:.09}.signature .method{grid-template-columns:1fr}.signature .method li{padding:18px 0}.signature .method li+li{border-left:0}.gather-script,.crystal-script{font-size:44px;margin-bottom:42px}.crystal-script{position:static;text-align:left;margin:70px 0 0}.closing{padding:90px 24px}.closing form{margin-top:65px;padding:38px 0 0}.circle-gallery{grid-template-columns:1fr}.circle-gallery .tall{height:350px}.events-callout{grid-template-columns:1fr;padding:90px 24px}.events-callout aside{border-left:0;border-top:1px solid var(--gold);padding:30px 0 0}.crystal-concierge{grid-template-columns:1fr}.crystal-concierge>div:first-child{padding-top:0}.crystal-vendor-image{order:0;min-height:500px;margin-top:30px}.process{padding:80px 24px}.process-photo{min-height:500px;border-radius:210px 18px 18px 18px}.process>div:last-child{margin-top:50px}}
 @media(max-width:420px){.art-hero{min-height:720px}.art-hero-copy{top:48%;padding:22px 18px}.art-hero h1{font-size:42px}.art-hero-copy>p:not(.eyebrow){font-size:14px;line-height:1.55}.art-hero .actions{margin-top:22px}.hero-whisper{font-size:12px}.signature-copy h2,.gather h2,.crystal-experience h2,.closing h2{font-size:52px}.home-practice-pair{padding-inline:18px}.home-gong,.home-reiki{height:360px}.circle-gallery{padding-inline:18px}}
+
+/* Mobile polish: preserve breathing room and show complete celestial details */
+.belief:after,.signature:after,.world-paths:after,.gather:after,.zen-and-pets:after,.circle-intro:after,.crystal-concierge:after{height:28px;background-size:auto 100%;background-repeat:repeat-x;background-position:center;opacity:.62;box-shadow:none}
+@media(max-width:850px){
+  .art-hero{height:auto;min-height:820px}
+  .art-hero-veil{background:linear-gradient(180deg,rgba(244,232,210,.84) 0%,rgba(244,232,210,.62) 62%,rgba(38,25,22,.12) 100%)}
+  .art-hero-copy{top:43%;background:rgba(244,232,210,.91);border-color:rgba(198,154,69,.65);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);box-shadow:0 18px 55px rgba(40,25,20,.1)}
+  .art-hero h1{color:var(--ink)}
+  .hero-whisper{bottom:18px;left:22px;right:22px;text-align:center}
+  .belief:after,.signature:after,.world-paths:after,.gather:after,.zen-and-pets:after,.circle-intro:after,.crystal-concierge:after{height:20px;background-size:auto 100%;opacity:.58}
+  .signature-atmosphere,.gather-atmosphere,.crystal-atmosphere{object-position:center!important;transform:scale(.86)}
+  .world-grid article>div{padding-inline:4px}
+  .world-grid h3{font-size:36px}
+  .home-practice-pair>p{left:24px;right:24px}
+  .circle-gallery .tall{overflow:visible}
+  .circle-symbol img{transform:scale(.82)}
+}
+@media(max-width:420px){
+  .site-header{height:82px}
+  .art-hero{min-height:820px}
+  .art-hero-copy{top:42%;left:14px;right:14px;padding:24px 18px;border-radius:56px 14px 14px 14px}
+  .art-hero h1{font-size:40px;line-height:.92;margin:16px 0 18px}
+  .art-hero .actions{gap:9px}.art-hero .button{padding-block:12px}
+  .belief{padding-inline:20px}.belief h2{font-size:78px}
+  .signature,.gather,.crystal-experience,.closing{padding-inline:20px}
+  .signature-copy h2,.gather h2,.crystal-experience h2,.closing h2{font-size:48px;line-height:.9}
+  .editorial-quote blockquote{font-size:58px}
+  .world-paths{padding-inline:20px}.world-title h2{font-size:54px}
+  .zen-and-pets{padding-inline:20px}.zen-intro h2{font-size:65px}
+  .closing form{width:100%}
+}
