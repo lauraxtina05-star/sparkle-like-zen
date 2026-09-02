@@ -13,7 +13,9 @@ const { d1, r2 } = hostingConfig;
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === 'seatbelt';
 
 const localBindingConfig = {
+  name: 'sparkle-like-zen',
   main: 'vinext/server/app-router-entry',
+  compatibility_date: '2026-09-01',
   compatibility_flags: ['nodejs_compat'],
   d1_databases: d1
     ? [
