@@ -201,3 +201,150 @@ form>.button{margin-top:32px}
   .actions .text-link{min-height:44px;text-align:center;white-space:normal}
   .crystal-detail-image.starfish-crystal{min-height:440px}
 }
+
+/* Focused mobile homepage QA: fluid type, deliberate rhythm, no clipped chapters */
+@media(max-width:850px){
+  .immersive-home h1,
+  .immersive-home h2,
+  .immersive-home blockquote{
+    max-width:100%;
+    overflow-wrap:normal;
+    word-break:normal;
+    hyphens:none;
+  }
+  .immersive-home .art-hero{
+    min-height:780px;
+    height:auto;
+  }
+  .immersive-home .art-hero-copy{
+    left:clamp(14px,5vw,22px);
+    right:clamp(14px,5vw,22px);
+    top:42%;
+    max-width:none;
+    padding:clamp(21px,6vw,27px) clamp(17px,5vw,23px);
+  }
+  .immersive-home .art-hero h1{
+    font-size:clamp(40px,12vw,54px);
+    line-height:.91;
+    letter-spacing:-.04em;
+    text-wrap:balance;
+  }
+  .immersive-home .art-hero-copy>p:not(.eyebrow){
+    max-width:34rem;
+    margin-inline:auto;
+  }
+  .immersive-home .art-hero .actions{
+    gap:9px;
+    margin-top:24px;
+  }
+  .immersive-home .art-hero .actions .button{
+    width:min(244px,100%);
+    min-width:0;
+  }
+  .immersive-home .hero-whisper{display:none}
+
+  .immersive-home .belief{
+    min-height:0;
+    padding:88px clamp(20px,6vw,28px) 78px;
+    align-items:flex-start;
+  }
+  .immersive-home .belief-copy{
+    width:100%;
+    max-width:40rem;
+    margin:0 auto;
+  }
+  .immersive-home .belief h2{
+    width:100%;
+    max-width:100%;
+    margin:24px 0 32px;
+    font-size:clamp(48px,14vw,64px);
+    line-height:.82;
+    letter-spacing:-.045em;
+    text-wrap:balance;
+  }
+  .immersive-home .belief-copy>p:last-child{
+    max-width:36rem;
+    margin:0;
+    font-size:16px;
+  }
+  .immersive-home .home-practice-pair{padding-block:68px 96px}
+
+  .immersive-home .signature,
+  .immersive-home .gather,
+  .immersive-home .crystal-experience,
+  .immersive-home .zen-and-pets,
+  .immersive-home .community-home{
+    padding-top:82px;
+    padding-bottom:82px;
+  }
+  .immersive-home .signature-copy h2,
+  .immersive-home .gather h2,
+  .immersive-home .crystal-experience h2,
+  .immersive-home .zen-intro h2,
+  .immersive-home .community-home h2{
+    font-size:clamp(46px,13vw,62px);
+    line-height:.9;
+    text-wrap:balance;
+  }
+  .immersive-home .editorial-quote{
+    min-height:0;
+    padding:84px 20px 70px;
+  }
+  .immersive-home .editorial-quote blockquote{
+    font-size:clamp(50px,14vw,66px);
+    margin-block:20px;
+    text-wrap:balance;
+  }
+  .immersive-home .world-paths{
+    padding:72px clamp(20px,6vw,28px) 86px;
+  }
+  .immersive-home .world-title{
+    gap:14px;
+    margin-bottom:44px;
+  }
+  .immersive-home .world-title h2{
+    font-size:clamp(46px,13vw,58px);
+    line-height:.9;
+    text-wrap:balance;
+  }
+  .immersive-home .world-two,
+  .immersive-home .world-three{margin-top:46px}
+
+  .immersive-home .community-home{gap:38px}
+  .immersive-home .community-home form{
+    display:grid;
+    gap:18px;
+    padding-top:30px;
+  }
+  .immersive-home .community-home form label{display:grid;gap:8px}
+  .immersive-home .community-home form>.button{
+    width:min(244px,100%);
+    margin:8px auto 0;
+  }
+}
+
+@media(max-width:430px){
+  .immersive-home .art-hero{min-height:750px}
+  .immersive-home .art-hero-copy{top:41%}
+  .immersive-home .belief{padding-top:74px;padding-bottom:68px}
+  .immersive-home .belief h2{font-size:clamp(46px,14vw,59px)}
+  .immersive-home .home-practice-pair{padding-block:60px 88px}
+  .immersive-home .signature,
+  .immersive-home .gather,
+  .immersive-home .crystal-experience,
+  .immersive-home .zen-and-pets,
+  .immersive-home .community-home{padding-top:72px;padding-bottom:72px}
+  .immersive-home .editorial-quote{padding-block:72px 58px}
+  .immersive-home .world-paths{padding-top:62px;padding-bottom:76px}
+  .immersive-home .world-title{margin-bottom:36px}
+}
+
+@media(max-width:340px){
+  .immersive-home .art-hero{min-height:735px}
+  .immersive-home .art-hero-copy{left:10px;right:10px;padding-inline:16px}
+  .immersive-home .art-hero h1{font-size:38px}
+  .immersive-home .belief{padding-inline:18px}
+  .immersive-home .belief h2{font-size:45px;letter-spacing:-.05em}
+  .immersive-home .world-paths{padding-inline:18px}
+  .immersive-home .world-title h2{font-size:44px}
+}
