@@ -170,6 +170,7 @@ form>.button{margin-top:32px}
 .community-signup form>.button{margin-top:0}
 .simple-cta>.button{margin-inline:auto}
 .starfish-crystal img{object-fit:cover;object-position:center 52%}
+.form-status{min-height:24px;text-align:center}.form-status p{margin:0;font-size:13px}.form-success{color:#46613f}.form-error{color:var(--red)}button:disabled{cursor:wait;opacity:.66;transform:none!important}
 
 @media(max-width:850px){
   .site-header{
@@ -213,9 +214,9 @@ form>.button{margin-top:32px}
     hyphens:none;
   }
   .immersive-home .art-hero{
-    min-height:780px;
+    min-height:0;
     height:auto;
-    padding:clamp(165px,23svh,230px) 0 24px;
+    padding:clamp(105px,15svh,145px) 0 20px;
   }
   .immersive-home .art-hero-copy{
     position:relative;
@@ -226,7 +227,7 @@ form>.button{margin-top:32px}
     top:auto;
     max-width:none;
     margin:0 auto;
-    padding:clamp(21px,6vw,27px) clamp(17px,5vw,23px);
+    padding:clamp(22px,6vw,28px) clamp(22px,6vw,28px);
     transform:none;
   }
   .immersive-home .art-hero h1{
@@ -294,7 +295,7 @@ form>.button{margin-top:32px}
   }
   .immersive-home .editorial-quote{
     min-height:0;
-    padding:84px 20px 70px;
+    padding:72px 20px 42px;
   }
   .immersive-home .editorial-quote blockquote{
     font-size:clamp(50px,14vw,66px);
@@ -302,7 +303,7 @@ form>.button{margin-top:32px}
     text-wrap:balance;
   }
   .immersive-home .world-paths{
-    padding:72px clamp(20px,6vw,28px) 86px;
+    padding:44px clamp(20px,6vw,28px) 82px;
   }
   .immersive-home .world-title{
     gap:14px;
@@ -330,7 +331,7 @@ form>.button{margin-top:32px}
 }
 
 @media(max-width:430px){
-  .immersive-home .art-hero{min-height:750px}
+  .immersive-home .art-hero{min-height:0;padding-top:100px}
   .immersive-home .belief{padding-top:74px;padding-bottom:68px}
   .immersive-home .belief h2{font-size:clamp(46px,14vw,59px)}
   .immersive-home .home-practice-pair{padding-block:60px 88px}
@@ -338,18 +339,57 @@ form>.button{margin-top:32px}
   .immersive-home .gather,
   .immersive-home .crystal-experience,
   .immersive-home .zen-and-pets,
-  .immersive-home .community-home{padding-top:72px;padding-bottom:72px}
-  .immersive-home .editorial-quote{padding-block:72px 58px}
-  .immersive-home .world-paths{padding-top:62px;padding-bottom:76px}
+  .immersive-home .community-home{padding-top:64px;padding-bottom:64px}
+  .immersive-home .editorial-quote{padding-block:64px 38px}
+  .immersive-home .world-paths{padding-top:40px;padding-bottom:72px}
   .immersive-home .world-title{margin-bottom:36px}
 }
 
 @media(max-width:340px){
-  .immersive-home .art-hero{min-height:735px}
+  .immersive-home .art-hero{min-height:0;padding-top:92px}
   .immersive-home .art-hero-copy{width:calc(100% - 20px);padding-inline:16px}
   .immersive-home .art-hero h1{font-size:38px}
   .immersive-home .belief{padding-inline:18px}
   .immersive-home .belief h2{font-size:45px;letter-spacing:-.05em}
   .immersive-home .world-paths{padding-inline:18px}
   .immersive-home .world-title h2{font-size:44px}
+}
+
+/* Focused responsive alignment and spacing refinements */
+@media(max-width:850px){
+  .story-copy blockquote{
+    margin:36px 0;
+    padding:26px 20px;
+    border-left:0;
+    border-block:1px solid var(--gold);
+    text-align:center;
+    font-size:clamp(25px,7vw,32px);
+    line-height:1.35;
+  }
+  .page-hero h1,.crystals-hero h1,.event-hero h1{
+    max-width:100%;
+    font-size:clamp(48px,14vw,70px);
+    overflow-wrap:normal;
+    word-break:normal;
+  }
+  .inquiry-vertical{padding-block:76px}
+  .inquiry-vertical form{gap:20px;padding-top:34px}
+  .inquiry-vertical form>.button{width:min(244px,100%)}
+  .crystals-hero-copy .actions,.crystal-experience .actions{align-items:center}
+  .community-home{min-height:0}
+  footer{padding:50px 24px 26px;gap:32px 24px}
+  footer>div{gap:8px}
+  .footer-brand{gap:10px}
+  .footer-brand p{max-width:410px;margin:0}
+  .footer-bottom{gap:8px;margin-top:8px;padding-top:18px}
+}
+@media(max-width:430px){
+  .immersive-home .art-hero .actions .button,
+  .immersive-home .crystal-experience .actions .button{
+    width:min(244px,100%);
+  }
+  .immersive-home .community-home form{gap:14px}
+  .immersive-home .community-home form>.button{margin-top:4px}
+  footer{grid-template-columns:1fr 1fr;padding-top:42px;gap:26px 20px}
+  .footer-brand,.footer-bottom{grid-column:1/-1}
 }

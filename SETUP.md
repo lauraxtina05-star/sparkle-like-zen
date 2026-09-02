@@ -2,7 +2,7 @@
 
 The site is ready for the existing business integrations. Replace only these placeholders when the live embed/action URLs are available:
 
-- `https://formspree.io/f/YOUR_FORM_ID` for The Sparkle Experience and general client inquiries.
+- `https://formspree.io/f/xgaeykwp` for The Inner Temple and general client inquiries.
 - `https://formspree.io/f/YOUR_EVENT_FORM_ID` for private events and collaborations.
 - `https://YOUR-MAILERLITE-FORM-URL` for circle and newsletter signup.
 
