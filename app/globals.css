@@ -393,3 +393,46 @@ form>.button{margin-top:32px}
   footer{grid-template-columns:1fr 1fr;padding-top:42px;gap:26px 20px}
   .footer-brand,.footer-bottom{grid-column:1/-1}
 }
+
+/* About hero: long headline must fit the mobile content width without clipping.
+   The container keeps its 24px side gutters; the fixed 48px total padding is
+   subtracted inside the calc so even the longest word ("compassionate") sits
+   inside the viewport at 320-430px. Desktop sizing is untouched. */
+@media(max-width:850px){
+  .about-hero h1{
+    max-width:100%;
+    font-size:clamp(28px,calc(10.8vw - 4px),60px);
+    line-height:1.02;
+    letter-spacing:-.03em;
+    overflow-wrap:normal;
+    word-break:normal;
+    hyphens:none;
+  }
+}
+
+/* Section headings that share the same class of problem as the About hero:
+   a wide display face with a large clamp() floor, so the longest single word
+   spilled past the mobile content box and was only hidden by overflow-x.
+   These floors drop to a viewport-relative calc() so every word fits the
+   24px-gutter content width from 320px up. Desktop sizing is unchanged. */
+@media(max-width:850px){
+  .circle-intro h2,
+  .crystal-concierge h2,
+  .crystal-detail h2,
+  .event-form-section h2,
+  .community-signup h2,
+  .immersive-home .community-home h2{
+    font-size:clamp(36px,calc(12vw - 6px),58px);
+    line-height:1;
+    overflow-wrap:normal;
+    word-break:normal;
+    text-wrap:balance;
+  }
+  .process h2{
+    font-size:clamp(32px,calc(10vw - 6px),54px);
+    line-height:1;
+    overflow-wrap:normal;
+    word-break:normal;
+    text-wrap:balance;
+  }
+}
