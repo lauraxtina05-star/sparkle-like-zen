@@ -707,3 +707,189 @@ form>.button{margin-top:32px}
     margin:4px auto 0!important;
   }
 }
+
+/* ===========================================================================
+   Homepage hero — immersive editorial redesign
+   ---------------------------------------------------------------------------
+   The old hero read as a boxed panel: a hard-edged 93%-ivory column on the
+   left (desktop) and a rounded, bordered, blurred "bubble" around the copy
+   (mobile), with a loud red uppercase eyebrow label stuck above the headline.
+
+   This block replaces that treatment. The painterly hero image now carries the
+   composition: only a soft directional ivory bloom sits behind the copy (no
+   hard edge, most of the artwork left visible), a light halo keeps the dark
+   type legible over it, the eyebrow label is gone in favour of one quiet gold
+   celestial mark, and both CTAs carry a visible fill before hover (deep red is
+   kept for hover only). Overrides the scattered `.art-hero*` rules earlier in
+   the file via `.immersive-home` scope plus source order.
+   =========================================================================== */
+.immersive-home .art-hero{
+  display:grid;
+  align-content:center;
+  height:min(900px,100svh);
+  min-height:660px;
+  padding:120px clamp(24px,7vw,118px) 96px;
+  border-bottom:1px solid var(--gold);
+  isolation:isolate;
+}
+.immersive-home .art-hero>img{object-position:64% center}
+
+/* soft directional reading field behind the copy — a luminous bloom, not a
+   hard-edged column; the right half of the artwork stays fully visible */
+.immersive-home .art-hero-veil{
+  z-index:1;
+  background:
+    radial-gradient(116% 88% at 26% 45%,
+      color-mix(in srgb,var(--ivory) 88%,transparent) 0%,
+      color-mix(in srgb,var(--ivory) 68%,transparent) 32%,
+      color-mix(in srgb,var(--ivory) 30%,transparent) 56%,
+      color-mix(in srgb,var(--ivory) 6%,transparent) 72%,
+      transparent 86%),
+    linear-gradient(90deg,
+      color-mix(in srgb,var(--ivory) 40%,transparent) 0%,
+      transparent 52%),
+    linear-gradient(0deg,
+      color-mix(in srgb,var(--ink) 30%,transparent) 0%,
+      transparent 26%);
+}
+
+.immersive-home .art-hero-copy{
+  position:relative;
+  z-index:3;
+  left:auto;
+  right:auto;
+  top:auto;
+  transform:none;
+  width:auto;
+  max-width:min(600px,80vw);
+  margin:0;
+  padding:0;
+  background:none;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+}
+/* quiet, integrated kicker — one celestial mark, not a label */
+.immersive-home .art-hero-copy::before{
+  content:'\2726';
+  display:block;
+  color:var(--gold);
+  font-size:15px;
+  line-height:1;
+  margin-bottom:20px;
+  opacity:.9;
+  text-shadow:0 1px 8px color-mix(in srgb,var(--ivory) 70%,transparent);
+}
+.immersive-home .art-hero h1{
+  font-size:clamp(58px,7vw,104px);
+  line-height:.9;
+  letter-spacing:-.03em;
+  margin:0 0 24px;
+  color:var(--ink);
+  text-wrap:balance;
+  max-width:12ch;
+  text-shadow:0 2px 14px color-mix(in srgb,var(--ivory) 74%,transparent),
+              0 1px 3px color-mix(in srgb,var(--ivory) 82%,transparent);
+}
+.immersive-home .art-hero-copy>p:not(.eyebrow){
+  max-width:34ch;
+  font-size:17px;
+  line-height:1.62;
+  color:var(--ink);
+  text-shadow:0 1px 10px color-mix(in srgb,var(--ivory) 82%,transparent),
+              0 1px 2px color-mix(in srgb,var(--ivory) 88%,transparent);
+}
+.immersive-home .art-hero .actions{
+  margin-top:34px;
+  gap:14px 18px;
+}
+/* CTAs: visible contrast before hover; deep red only on hover of the primary */
+.immersive-home .art-hero .button-accent{
+  box-shadow:0 8px 24px color-mix(in srgb,var(--red) 24%,transparent);
+}
+.immersive-home .art-hero .button-hero-2{
+  background:var(--ivory);
+  border:1px solid var(--gold);
+  color:var(--ink);
+  box-shadow:0 8px 24px color-mix(in srgb,var(--ink) 15%,transparent);
+}
+.immersive-home .art-hero .button-hero-2:hover{
+  background:var(--sage);
+  border-color:var(--sage);
+  color:var(--ink);
+  transform:translateY(-2px);
+}
+.immersive-home .hero-whisper{
+  color:var(--ivory);
+  right:clamp(24px,6vw,118px);
+  bottom:30px;
+  text-shadow:0 1px 2px color-mix(in srgb,black 55%,transparent),
+              0 0 18px color-mix(in srgb,var(--ink) 55%,transparent);
+}
+
+@media(max-width:850px){
+  .immersive-home .art-hero{
+    display:block;
+    min-height:0;
+    height:auto;
+    padding:clamp(104px,15svh,130px) 0 clamp(48px,11vw,74px);
+  }
+  .immersive-home .art-hero>img{object-position:58% center}
+  /* no card: an ivory wash that holds the dark type against the busy artwork up
+     top, then thins so the painting emerges toward the fold */
+  .immersive-home .art-hero-veil{
+    background:linear-gradient(180deg,
+      color-mix(in srgb,var(--ivory) 84%,transparent) 0%,
+      color-mix(in srgb,var(--ivory) 74%,transparent) 46%,
+      color-mix(in srgb,var(--ivory) 46%,transparent) 78%,
+      color-mix(in srgb,var(--ivory) 12%,transparent) 100%);
+  }
+  .immersive-home .art-hero-copy{
+    position:relative;
+    top:auto;
+    left:auto;
+    right:auto;
+    transform:none;
+    width:100%;
+    max-width:none;
+    margin:0;
+    padding:0 24px;
+  }
+  .immersive-home .art-hero-copy::before{
+    margin-bottom:15px;
+    font-size:14px;
+  }
+  .immersive-home .art-hero h1{
+    font-size:clamp(40px,11.5vw,58px);
+    line-height:.94;
+    letter-spacing:-.035em;
+    margin:0 0 16px;
+    max-width:none;
+    text-shadow:0 2px 10px color-mix(in srgb,var(--ivory) 78%,transparent),
+                0 1px 3px color-mix(in srgb,var(--ivory) 85%,transparent);
+  }
+  .immersive-home .art-hero-copy>p:not(.eyebrow){
+    max-width:34rem;
+    font-size:15.5px;
+    line-height:1.6;
+    text-shadow:0 1px 8px color-mix(in srgb,var(--ivory) 86%,transparent),
+                0 1px 2px color-mix(in srgb,var(--ivory) 90%,transparent);
+  }
+  .immersive-home .art-hero .actions{
+    margin-top:24px;
+    gap:10px;
+  }
+  .immersive-home .art-hero .actions .button{
+    width:min(244px,100%);
+    min-width:0;
+  }
+  .immersive-home .hero-whisper{display:none}
+}
+
+@media(max-width:380px){
+  .immersive-home .art-hero{padding-top:98px}
+  .immersive-home .art-hero h1{font-size:clamp(36px,11vw,46px)}
+  .immersive-home .art-hero-copy>p:not(.eyebrow){font-size:15px}
+}

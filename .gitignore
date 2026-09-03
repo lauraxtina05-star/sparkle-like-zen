@@ -41,3 +41,6 @@ next-env.d.ts
 desktop-qa.png
 mobile-qa.png
 *-qa.png
+
+# build artifacts
+tsconfig.tsbuildinfo
