@@ -62,7 +62,7 @@ html,body{overflow-x:hidden}main,section,form{min-width:0}
 .event-hero-art{position:relative;margin:50px 6vw 50px 0;border-radius:300px 300px 22px 22px;overflow:hidden;display:grid;place-items:center;background:color-mix(in srgb,var(--ivory) 38%,transparent);border:1px solid color-mix(in srgb,var(--gold) 58%,transparent)}.event-hero-art img{object-fit:contain;opacity:.48}.event-hero-art span{position:relative;z-index:1;text-align:center;font:clamp(62px,7vw,104px)/.88 'Romans Story',Georgia,serif;color:var(--red)}
 .crystals-hero{display:grid;grid-template-columns:1.08fr .92fr;min-height:790px;background:var(--sage)}.crystals-hero-image{position:relative;min-height:720px;margin:55px 0 55px 5vw;border-radius:26px 320px 26px 26px;overflow:hidden}.crystals-hero-image img,.crystal-vendor-image img,.crystal-detail-image img{object-fit:cover}.crystals-hero-copy{align-self:center;padding:100px clamp(32px,8vw,120px)}.crystals-hero h1{font-size:clamp(74px,8vw,120px);line-height:.84;margin:24px 0}.crystals-hero-copy>p:last-of-type{font:19px/1.65 Georgia,serif}.crystal-concierge,.crystal-detail{display:grid;grid-template-columns:1fr 1fr;gap:8vw;padding:130px clamp(24px,8vw,125px);align-items:center}.crystal-concierge h2,.crystal-detail h2{font-size:clamp(62px,7vw,100px);line-height:.88;margin:20px 0}.crystal-concierge ul{list-style:none;padding:0;margin:35px 0}.crystal-concierge li{padding:14px 0;border-bottom:1px solid var(--gold)}.crystal-vendor-image{position:relative;min-height:680px;border-radius:280px 24px 24px 24px;overflow:hidden}.crystal-detail{background:var(--rose)}.crystal-detail-image{position:relative;min-height:650px;border-radius:24px 280px 24px 24px;overflow:hidden}
 @media(max-width:850px){.signature-art{min-height:530px;margin:55px 24px 0;border-radius:240px 240px 20px 20px}.signature-art span{font-size:42px}.world-symbol{height:430px}.gather-art,.crystal-art{min-height:500px;margin:35px 24px 0;border-radius:220px 220px 20px 20px}.event-hero-art{order:-1;min-height:500px;margin:35px 24px 0}.crystals-hero,.crystal-concierge,.crystal-detail{grid-template-columns:1fr}.crystals-hero-image{min-height:540px;margin:35px 24px 0;border-radius:240px 240px 20px 20px}.crystals-hero-copy{padding:75px 24px}.crystals-hero h1{font-size:72px}.crystal-concierge,.crystal-detail{padding:90px 24px}.crystal-vendor-image,.crystal-detail-image{min-height:520px}.crystal-vendor-image{order:-1}}
-@media(max-width:850px){.art-hero-veil{background:linear-gradient(color-mix(in srgb,var(--ivory) 94%,transparent),color-mix(in srgb,var(--ivory) 70%,transparent) 72%,color-mix(in srgb,var(--ink) 25%,transparent))}.art-hero-copy{left:18px;right:18px;top:49%;padding:25px 22px;background:color-mix(in srgb,var(--ivory) 84%,transparent);border:1px solid color-mix(in srgb,var(--gold) 58%,transparent);border-radius:90px 18px 18px 18px;backdrop-filter:blur(3px)}.art-hero h1{font-size:58px}.event-form-section input,.event-form-section textarea,.event-form-section select{min-width:0}}
+@media(max-width:850px){.art-hero-veil{background:linear-gradient(color-mix(in srgb,var(--ivory) 94%,transparent),color-mix(in srgb,var(--ivory) 70%,transparent) 72%,color-mix(in srgb,var(--ink) 25%,transparent))}.art-hero h1{font-size:58px}.event-form-section input,.event-form-section textarea,.event-form-section select{min-width:0}}
 
 /* Shared navigation glass and patterned footer */
 .site-header{background:color-mix(in srgb,var(--ivory) 76%,transparent);backdrop-filter:blur(14px) saturate(1.08);-webkit-backdrop-filter:blur(14px) saturate(1.08);box-shadow:0 8px 30px color-mix(in srgb,var(--ink) 9%,transparent)}.header-dark{background:color-mix(in srgb,var(--ivory) 91%,transparent)}
@@ -101,7 +101,6 @@ footer{position:relative;isolation:isolate;background:var(--rose);overflow:hidde
 @media(max-width:850px){
   .art-hero{height:auto;min-height:820px}
   .art-hero-veil{background:linear-gradient(180deg,rgba(244,232,210,.84) 0%,rgba(244,232,210,.62) 62%,rgba(38,25,22,.12) 100%)}
-  .art-hero-copy{top:43%;background:rgba(244,232,210,.91);border-color:rgba(198,154,69,.65);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);box-shadow:0 18px 55px rgba(40,25,20,.1)}
   .art-hero h1{color:var(--ink)}
   .hero-whisper{bottom:18px;left:22px;right:22px;text-align:center}
   .belief:after,.signature:after,.world-paths:after,.gather:after,.zen-and-pets:after,.circle-intro:after,.crystal-concierge:after{height:20px;background-size:auto 100%;opacity:.58}
@@ -115,7 +114,6 @@ footer{position:relative;isolation:isolate;background:var(--rose);overflow:hidde
 @media(max-width:420px){
   .site-header{height:82px}
   .art-hero{min-height:820px}
-  .art-hero-copy{top:42%;left:14px;right:14px;padding:24px 18px;border-radius:56px 14px 14px 14px}
   .art-hero h1{font-size:40px;line-height:.92;margin:16px 0 18px}
   .art-hero .actions{gap:9px}.art-hero .button{padding-block:12px}
   .belief{padding-inline:20px}.belief h2{font-size:78px}
