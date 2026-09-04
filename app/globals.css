@@ -891,3 +891,201 @@ form>.button{margin-top:32px}
   .immersive-home .art-hero h1{font-size:clamp(36px,11vw,46px)}
   .immersive-home .art-hero-copy>p:not(.eyebrow){font-size:15px}
 }
+
+/* ===========================================================================
+   Client Reflections — testimonials page
+   ---------------------------------------------------------------------------
+   Editorial hero, a custom one-at-a-time testimonial slider (arrows + an
+   01 / 07 progress marker, soft fade + directional slide, disabled under
+   prefers-reduced-motion), and a soft CTA into The Inner Temple. Open
+   composition throughout — no cards, just type, negative space and one
+   quiet celestial mark per slide.
+   =========================================================================== */
+.reflections-hero{
+  max-width:940px;
+  margin:0 auto;
+  text-align:center;
+  padding:clamp(120px,16vw,182px) 24px clamp(58px,8vw,90px);
+}
+.reflections-hero h1{
+  margin:0;
+  font-size:clamp(36px,5.4vw,74px);
+  line-height:.98;
+  text-wrap:balance;
+}
+.reflections-hero>p:not(.eyebrow){
+  max-width:46ch;
+  margin:clamp(18px,2.6vw,26px) auto 0;
+  font:18px/1.7 Georgia,serif;
+  color:color-mix(in srgb,var(--ink) 84%,transparent);
+}
+
+.reflections-slider{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  background:linear-gradient(160deg,var(--ivory),color-mix(in srgb,var(--sage) 15%,var(--ivory)));
+  border-block:1px solid color-mix(in srgb,var(--gold) 45%,transparent);
+  padding:clamp(76px,11vw,138px) clamp(24px,8vw,120px) clamp(88px,12vw,150px);
+}
+.reflections-slider::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:url('/images/celestial-orbit.png') center/min(760px,88vw) no-repeat;
+  opacity:.08;
+  pointer-events:none;
+}
+
+.slider-inner{
+  --vp-h:clamp(300px,44vw,400px);
+  position:relative;
+  max-width:1080px;
+  margin:0 auto;
+}
+.slider-viewport{
+  min-height:var(--vp-h);
+  display:grid;
+  align-content:center;
+  touch-action:pan-y;
+  outline:none;
+}
+.slider-viewport:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:16px;
+  border-radius:4px;
+}
+.slide{
+  margin:0 auto;
+  max-width:640px;
+  text-align:center;
+  /* no fill mode: if the animation never runs the slide still shows at its
+     natural state (opaque, untransformed) rather than being held invisible */
+  animation:reflectionIn .5s cubic-bezier(.22,.61,.36,1);
+}
+.slide::before{
+  content:'\2726';
+  display:block;
+  margin:0 0 clamp(16px,2.4vw,24px);
+  color:var(--gold);
+  font-size:15px;
+  line-height:1;
+}
+.slide-text{
+  margin:0;
+  font:400 clamp(17px,2.15vw,23px)/1.62 Georgia,serif;
+  color:var(--ink);
+}
+.slide-attr{
+  margin-top:clamp(22px,3vw,32px);
+}
+.slide-name{
+  font:400 clamp(16px,1.8vw,19px)/1.4 Georgia,serif;
+  font-style:normal;
+  letter-spacing:.02em;
+  color:var(--red);
+}
+.slide-name::before{content:'\2014\00a0'}
+
+.slider-nav{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(18px,5vw,24px);
+  margin-top:clamp(30px,6vw,42px);
+}
+.slider-arrow{
+  flex:none;
+  width:clamp(46px,6vw,54px);
+  height:clamp(46px,6vw,54px);
+  display:grid;
+  place-items:center;
+  padding:0;
+  border:1px solid color-mix(in srgb,var(--gold) 62%,transparent);
+  border-radius:999px;
+  background:transparent;
+  color:var(--ink);
+  cursor:pointer;
+  transition:background .25s ease,border-color .25s ease,color .25s ease,transform .25s ease;
+}
+.slider-arrow:hover{
+  background:var(--rose);
+  border-color:var(--rose);
+  color:var(--ink);
+  transform:translateY(-2px);
+}
+.slider-arrow:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:3px;
+}
+.slider-arrow svg{display:block}
+
+.slider-progress{
+  margin:0;
+  display:flex;
+  align-items:baseline;
+  gap:.5em;
+  font-family:'Romans Story',Georgia,serif;
+  letter-spacing:.14em;
+  white-space:nowrap;
+}
+.slider-progress .current{
+  font-size:clamp(19px,2.3vw,24px);
+  color:var(--red);
+}
+.slider-progress .sep,
+.slider-progress .total{
+  font-size:clamp(13px,1.7vw,16px);
+  color:color-mix(in srgb,var(--ink) 45%,transparent);
+}
+
+.reflections-cta{
+  text-align:center;
+  padding:clamp(96px,13vw,168px) 24px;
+  background:linear-gradient(150deg,var(--ivory),color-mix(in srgb,var(--rose) 20%,var(--ivory)));
+}
+.reflections-cta h2{
+  margin:0 auto;
+  max-width:16ch;
+  font-size:clamp(38px,6vw,88px);
+  line-height:.94;
+  text-wrap:balance;
+}
+.reflections-cta .actions{
+  justify-content:center;
+  margin-top:clamp(28px,4vw,40px);
+}
+
+@keyframes reflectionIn{
+  from{opacity:0;transform:translateX(var(--enter-x,16px))}
+  to{opacity:1;transform:none}
+}
+
+@media(min-width:851px){
+  .slider-inner{
+    display:grid;
+    grid-template-columns:auto minmax(0,1fr) auto;
+    grid-template-areas:'prev slide next' 'nav nav nav';
+    align-items:center;
+    column-gap:clamp(22px,4.4vw,60px);
+    row-gap:clamp(28px,4vw,46px);
+  }
+  .slider-viewport{grid-area:slide}
+  .slider-nav{display:contents}
+  .slider-nav .slider-arrow[data-dir='prev']{grid-area:prev}
+  .slider-nav .slider-arrow[data-dir='next']{grid-area:next}
+  .slider-nav .slider-progress{grid-area:nav;justify-self:center}
+}
+
+@media(max-width:850px){
+  .reflections-hero{padding-top:clamp(104px,26vw,140px)}
+  .reflections-hero h1{font-size:clamp(30px,8.2vw,46px);line-height:1.03}
+  .reflections-slider{padding-left:24px;padding-right:24px}
+  .slider-inner{--vp-h:clamp(260px,64vw,340px)}
+  .slide-text{font-size:clamp(16.5px,4.7vw,20px)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .slide{animation:none}
+}
