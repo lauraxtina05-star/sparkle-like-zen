@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import {Footer, Header} from '../components';
 import {InquiryForm} from '../inquiry-form';
-import {ReflectionGallery} from '../reflection-gallery';
+import {ReflectionsSlider} from '../reflections-slider';
 
 const whatsapp='https://wa.me/17862018993?text=Hi%20Zen!%20I%E2%80%99m%20interested%20in%20The%20Inner%20Temple%20and%20would%20love%20to%20learn%20more.';
 
@@ -9,5 +9,5 @@ export default function InnerTemple(){return <main><Header dark/><section classN
 <section className="session-intro reveal"><p className="eyebrow">A session shaped around what is present</p><h2>We begin with what is here.</h2><p>This is not a Reiki menu or a one-size-fits-all ritual. I listen first. From there, I may draw from reflection, energetic support, prayer, meditation, crystals, or another practice that genuinely fits the moment.</p></section>
 <section className="experience-flow"><article><span>01</span><h3>Reflect</h3><p>Start with what is actually present, without rushing to explain it away.</p></article><i/><article><span>02</span><h3>Receive</h3><p>Allow room for rest, prayer, energetic support, or the practice that fits.</p></article><i/><article><span>03</span><h3>Integrate</h3><p>Make meaning of what surfaced and name something practical to carry forward.</p></article><i/><article><span>04</span><h3>Reconnect</h3><p>Leave closer to your own knowing, not dependent on someone else’s interpretation.</p></article></section>
 <section className="process"><div className="process-photo image-reveal"><Image src="/images/crystal-grid-on-woman.JPG" alt="Crystals placed thoughtfully during a private experience" fill sizes="(max-width:850px) 100vw, 46vw"/></div><div className="reveal"><p className="eyebrow">What you can expect</p><h2>A quiet hour with somewhere to land.</h2><p>You do not need to arrive with the right words or know which tool you need. Bring what you are carrying. Together, we make room to hear it and close with something useful for real life.</p><blockquote>“I want our work together to strengthen your own intuition, discernment, and ability to recognize what you need, so that each session leaves you feeling more connected to your own inner guidance.”</blockquote></div></section>
-<ReflectionGallery/>
+<ReflectionsSlider intro={{eyebrow:'Client reflections',title:'In their words.',link:{href:'/client-reflections',label:'Read all reflections →'}}}/>
 <section className="inquiry inquiry-vertical" id="inquire"><div className="reveal"><p className="eyebrow">Begin an inquiry</p><h2>Tell me what is calling.</h2><p>Share a little about what is present. I will follow up so we can decide whether the experience feels like a fit.</p></div><InquiryForm/></section><Footer/></main>}

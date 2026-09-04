@@ -6,7 +6,9 @@ import {reflections} from './reflections-data';
 
 const pad = (n: number) => n.toString().padStart(2, '0');
 
-export function ReflectionsSlider() {
+type SliderIntro = {eyebrow: string; title: string; link?: {href: string; label: string}};
+
+export function ReflectionsSlider({intro}: {intro?: SliderIntro}) {
   const total = reflections.length;
   const [index, setIndex] = useState(0);
   const [dir, setDir] = useState<1 | -1>(1);
@@ -53,6 +55,17 @@ export function ReflectionsSlider() {
 
   return (
     <section className="reflections-slider reveal" aria-label="Client reflections">
+      {intro && (
+        <div className="slider-intro">
+          <p className="eyebrow">{intro.eyebrow}</p>
+          <h2>{intro.title}</h2>
+          {intro.link && (
+            <a className="text-link" href={intro.link.href}>
+              {intro.link.label}
+            </a>
+          )}
+        </div>
+      )}
       <div className="slider-inner" style={{'--enter-x': `${dir * 18}px`} as CSSProperties}>
         <div
           className="slider-viewport"
