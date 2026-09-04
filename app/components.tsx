@@ -3,7 +3,7 @@ import Image from 'next/image';
 const whatsapp = 'https://wa.me/17862018993?text=Hi%20Zen!%20I%20found%20you%20through%20the%20Sparkle%20Like%20Zen%20website%20and%20I%E2%80%99d%20love%20to%20learn%20more%20about%20working%20together.';
 
 export function Header({dark=false}:{dark?:boolean}) {
-  const links = <><a href="/">Home</a><a href="/about">About</a><a href="/private-work">The Inner Temple</a><a href="/circles-events">Circles + Events</a><a href="/crystals">Crystals</a><a href="/#community">Contact</a></>;
+  const links = <><a href="/">Home</a><a href="/about">About</a><a href="/private-work">The Inner Temple</a><a href="/circles-events">Circles + Events</a><a href="/crystals">Crystals</a><a href="/client-reflections">Reflections</a><a href="/#community">Contact</a></>;
   return <header className={`site-header ${dark?'header-dark':''}`}>
     <a href="/" className="brand" aria-label="Sparkle Like Zen home"><Image className="lotus-logo" src="/images/lotus-hand-logo.png" alt="" width={62} height={62} priority/><span>Sparkle Like Zen</span></a>
     <nav aria-label="Primary navigation">{links}</nav>

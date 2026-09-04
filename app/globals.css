@@ -902,13 +902,16 @@ form>.button{margin-top:32px}
    quiet celestial mark per slide.
    =========================================================================== */
 .reflections-hero{
-  max-width:940px;
-  margin:0 auto;
   text-align:center;
-  padding:clamp(120px,16vw,182px) 24px clamp(58px,8vw,90px);
+  padding:clamp(120px,16vw,182px) clamp(24px,8vw,90px) clamp(66px,9vw,102px);
+  background:linear-gradient(168deg,
+    color-mix(in srgb,var(--rose) 34%,var(--ivory)) 0%,
+    color-mix(in srgb,var(--rose) 15%,var(--ivory)) 46%,
+    var(--ivory) 100%);
 }
 .reflections-hero h1{
-  margin:0;
+  max-width:900px;
+  margin:0 auto;
   font-size:clamp(36px,5.4vw,74px);
   line-height:.98;
   text-wrap:balance;
@@ -1088,4 +1091,52 @@ form>.button{margin-top:32px}
 
 @media(prefers-reduced-motion:reduce){
   .slide{animation:none}
+}
+
+/* Reflections gallery — a static "wall of words" for secondary placements
+   (The Inner Temple page, before the inquiry form). Magazine multi-column,
+   gold hairline per entry, no cards. */
+.reflection-gallery{
+  padding:clamp(90px,12vw,150px) clamp(24px,8vw,125px);
+  background:var(--ivory);
+  border-block:1px solid color-mix(in srgb,var(--gold) 45%,transparent);
+}
+.reflection-gallery-head{
+  max-width:780px;
+  margin:0 0 clamp(40px,6vw,64px);
+}
+.reflection-gallery-head h2{
+  margin:0 0 18px;
+  font-size:clamp(38px,6vw,86px);
+  line-height:.94;
+  text-wrap:balance;
+}
+.reflection-gallery-grid{
+  columns:2;
+  column-gap:clamp(34px,6vw,80px);
+}
+.reflection-card{
+  break-inside:avoid;
+  margin:0 0 clamp(28px,4vw,42px);
+  padding-top:clamp(20px,2.6vw,28px);
+  border-top:1px solid color-mix(in srgb,var(--gold) 55%,transparent);
+}
+.reflection-card p{
+  margin:0 0 12px;
+  font:400 clamp(15px,1.45vw,17px)/1.62 Georgia,serif;
+  color:var(--ink);
+}
+.reflection-card-name{
+  font:400 15px/1.4 Georgia,serif;
+  font-style:normal;
+  letter-spacing:.02em;
+  color:var(--red);
+}
+.reflection-card-name::before{content:'\2014\00a0'}
+
+@media(max-width:850px){
+  .reflection-gallery{padding-left:24px;padding-right:24px}
+  .reflection-gallery-head h2{font-size:clamp(30px,8.2vw,46px)}
+  .reflection-gallery-grid{columns:1}
+  .reflection-card p{font-size:16px}
 }
