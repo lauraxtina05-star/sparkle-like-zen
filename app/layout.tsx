@@ -35,6 +35,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} antialiased`}
       >
+        <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
         {children}
         {/* MailerLite Universal — loaded once for the whole site */}
         <Script id="mailerlite-universal" strategy="afterInteractive">

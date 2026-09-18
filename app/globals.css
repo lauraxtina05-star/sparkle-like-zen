@@ -1171,3 +1171,24 @@ form>.button{margin-top:32px}
   }
   .sparkle-page .page-hero-image::after{top:9%;left:10%}
 }
+
+/* Inner Temple booking: an open editorial section, without an extra card. */
+.inner-temple-booking{
+  padding:clamp(72px,8vw,120px) clamp(16px,6vw,90px);
+  background:linear-gradient(180deg,var(--ivory),color-mix(in srgb,var(--sage) 18%,var(--ivory)));
+  border-block:1px solid color-mix(in srgb,var(--gold) 55%,transparent);
+  scroll-margin-top:88px;
+}
+.booking-intro{max-width:760px;margin:0 auto 48px;text-align:center}
+.booking-intro h2{font-size:clamp(42px,6vw,78px);margin:16px 0 20px;line-height:1.04}
+.booking-intro>p:last-child{font-size:clamp(16px,1.4vw,19px);margin:0 auto;max-width:600px}
+.inner-temple-calendar{width:100%;max-width:1100px;min-width:0;height:780px;margin:0 auto;overflow:hidden}
+.inner-temple-calendar iframe{width:100%!important;min-width:0!important;max-width:100%}
+.calendar-fallback{text-align:center;font-size:13px;margin:18px auto 0}
+.calendar-fallback a{border-bottom:1px solid var(--gold);padding-bottom:3px}
+.button:disabled{opacity:.65;cursor:wait;transform:none;box-shadow:none}
+@media(max-width:600px){
+  .inner-temple-booking{padding:76px 12px 66px}
+  .booking-intro{padding:0 12px;margin-bottom:30px}
+  .inner-temple-calendar{height:940px}
+}
