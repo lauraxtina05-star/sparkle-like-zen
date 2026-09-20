@@ -1186,6 +1186,9 @@ form>.button{margin-top:32px}
 .inner-temple-calendar iframe{width:100%!important;min-width:0!important;max-width:100%}
 .calendar-fallback{text-align:center;font-size:13px;margin:18px auto 0}
 .calendar-fallback a{border-bottom:1px solid var(--gold);padding-bottom:3px}
+.inquiry-questions{background:var(--ivory)}
+.inquiry-questions>div:first-child{max-width:640px}
+.inquiry-questions form{max-width:680px}
 .button:disabled{opacity:.65;cursor:wait;transform:none;box-shadow:none}
 @media(max-width:600px){
   .inner-temple-booking{padding:76px 12px 66px}

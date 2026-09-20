@@ -8,7 +8,7 @@ export function Header({dark=false}:{dark?:boolean}) {
     <a href="/" className="brand" aria-label="Sparkle Like Zen home"><Image className="lotus-logo" src="/images/lotus-hand-logo.png" alt="" width={62} height={62} priority/><span>Sparkle Like Zen</span></a>
     <nav aria-label="Primary navigation">{links}</nav>
     <details className="mobile-nav"><summary aria-label="Open navigation">Menu</summary><div>{links}</div></details>
-    <a className="button button-small" href="/private-work#inquire">Book / Inquire</a>
+    <a className="button button-small" href="/private-work">The Inner Temple</a>
   </header>;
 }
 
