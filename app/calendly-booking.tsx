@@ -40,21 +40,26 @@ function loadCalendly(): Promise<CalendlyWidget> {
 
 export function CalendlyBookingButton({children, className = 'button button-accent'}: {children: React.ReactNode; className?: string}) {
   const [loading, setLoading] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   async function openBooking() {
     if (loading) return;
     setLoading(true);
+    setFailed(false);
     try {
       const widget = await loadCalendly();
       widget.initPopupWidget({url: styledEventUrl});
     } catch {
-      window.open(eventUrl, '_blank', 'noopener,noreferrer');
+      setFailed(true);
     } finally {
       setLoading(false);
     }
   }
 
-  return <button type="button" className={className} onClick={openBooking} disabled={loading}>{children}</button>;
+  return <>
+    <button type="button" className={className} onClick={openBooking} disabled={loading}>{children}</button>
+    {failed && <span className="calendly-popup-fallback" role="status">The calendar could not open. <a href={eventUrl} target="_blank" rel="noopener noreferrer">Open the booking calendar</a></span>}
+  </>;
 }
 
 export function CalendlyInlineBooking() {
@@ -73,6 +78,6 @@ export function CalendlyInlineBooking() {
 
   return <>
     <div ref={container} className="inner-temple-calendar" aria-label="Book an Inner Temple session" />
-    <p className="calendar-fallback">{failed ? 'The calendar is unavailable right now. ' : ''}<a href={eventUrl} target="_blank" rel="noopener noreferrer">Open the booking calendar ↗</a></p>
+    <p className="calendar-fallback">{failed ? 'The calendar is unavailable right now. ' : ''}<a href={eventUrl} target="_blank" rel="noopener noreferrer">Open the booking calendar</a></p>
   </>;
 }
