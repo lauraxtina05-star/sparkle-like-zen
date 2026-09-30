@@ -1219,3 +1219,34 @@ form>.button{margin-top:32px}
 @media(max-width:430px){.links-community strong{font-size:clamp(20px,6.3vw,27px);overflow-wrap:anywhere}.links-editorial a{font-size:clamp(20px,7vw,28px)}}
 @media(max-width:359px){.links-page{padding-inline:14px}.links-intro h1{font-size:38px}.links-feature{padding-inline:16px}.links-community{padding-inline:18px}.links-secondary{gap:8px 12px}.links-secondary a{font-size:12px}.links-gong-image{aspect-ratio:1.25}}
 .calendly-popup-fallback{display:block;grid-column:1/-1;margin:-2px auto 4px;text-align:center;font-size:12px;line-height:1.5}.calendly-popup-fallback a{border-bottom:1px solid var(--gold)}
+
+/* Official Sparkle Like Zen brand mark: shared circular presentation only. */
+.brand-logo{
+  position:relative;
+  display:block;
+  flex:none;
+  overflow:hidden;
+  border-radius:50%;
+  background:#fff;
+  border:1px solid color-mix(in srgb,var(--gold) 72%,transparent);
+  box-shadow:0 4px 12px color-mix(in srgb,var(--ink) 10%,transparent);
+}
+.brand-logo img,
+.site-header .brand .brand-logo img,
+.footer-brand .brand-logo img{
+  display:block;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  border-radius:0;
+  mix-blend-mode:normal;
+}
+.brand-logo-nav{width:58px;height:58px}
+.brand span.brand-logo{display:block}
+.brand-logo-footer{width:96px;height:96px}
+.brand-logo-links{width:88px;height:88px;margin:0 auto 20px}
+@media(max-width:850px){
+  .brand-logo-nav{width:50px;height:50px}
+  .brand-logo-footer{width:88px;height:88px}
+}
+@media(min-width:600px){.brand-logo-links{width:98px;height:98px}}

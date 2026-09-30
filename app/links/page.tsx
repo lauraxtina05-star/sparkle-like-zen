@@ -17,7 +17,7 @@ export default function LinksPage(){return <main className="links-page">
   <div className="links-atmosphere" aria-hidden="true"><Image src="/images/celestial-orbit.png" alt="" fill sizes="100vw"/></div>
   <section className="links-shell">
     <header className="links-intro">
-      <a href="/" aria-label="Sparkle Like Zen home"><Image className="links-logo" src="/images/lotus-hand-logo.png" alt="" width={94} height={94} priority/></a>
+      <a href="/" className="brand-logo brand-logo-links" aria-label="Sparkle Like Zen home"><Image src="/images/sparkle-like-zen-logo-display.JPG" alt="" width={94} height={94} priority/></a>
       <div className="links-gong-image"><Image src="/images/hero-gong.JPG" alt="Zen seated in front of a gong" fill priority sizes="(max-width: 620px) calc(100vw - 36px), 580px"/></div>
       <p className="eyebrow">A quiet space</p>
       <h1>Sparkle Like Zen</h1>

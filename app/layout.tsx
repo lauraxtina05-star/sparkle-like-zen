@@ -12,6 +12,14 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://sparklelikezen.com'),
   title: 'Sparkle Like Zen | The Inner Temple',
   description: 'Private spiritual support, circles, events, and crystal experiences with Zen.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '64x64' },
+      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
+      { url: '/icon-512.png', type: 'image/png', sizes: '512x512' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
   openGraph: {
     title: 'Sparkle Like Zen',
     description: 'A sacred space to reconnect with your own knowing.',
