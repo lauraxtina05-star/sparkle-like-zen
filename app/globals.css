@@ -1188,6 +1188,14 @@ form>.button{margin-top:32px}
   font:clamp(18px,1.8vw,23px)/1.55 Georgia,serif;
   text-wrap:balance;
 }
+.inner-temple-page .virtual-positioning{
+  max-width:40ch;
+  margin:22px 0 0;
+  padding-left:18px;
+  border-left:1px solid var(--gold);
+  font:italic 16px/1.58 Georgia,serif;
+  color:color-mix(in srgb,var(--red) 70%,var(--ink));
+}
 .temple-introduction{
   max-width:700px;
   margin:0 auto;
@@ -1224,17 +1232,19 @@ form>.button{margin-top:32px}
 
 .sacred-space{
   display:grid;
-  grid-template-columns:minmax(320px,.9fr) minmax(0,1.1fr);
+  grid-template-columns:minmax(360px,.94fr) minmax(0,1.06fr);
   gap:clamp(52px,8vw,124px);
   align-items:center;
   padding:clamp(88px,10vw,142px) clamp(24px,8vw,124px);
-  background:linear-gradient(145deg,color-mix(in srgb,var(--rose) 20%,var(--ivory)),var(--ivory) 58%);
+  background:color-mix(in srgb,var(--rose) 10%,var(--ivory));
 }
 .sacred-space-photo{
   position:relative;
-  min-height:clamp(560px,64vw,760px);
+  width:min(100%,740px);
+  aspect-ratio:1265/1244;
   overflow:hidden;
-  border-radius:48% 48% 20px 20px / 25% 25% 20px 20px;
+  border-radius:2px 86px 2px 2px;
+  box-shadow:0 24px 56px color-mix(in srgb,var(--ink) 14%,transparent);
 }
 .sacred-space-photo img{object-fit:cover;object-position:center}
 .sacred-space-copy{max-width:680px}
@@ -1247,33 +1257,56 @@ form>.button{margin-top:32px}
   line-height:.98;
   text-wrap:balance;
 }
-.sacred-space-copy>p:not(.eyebrow){font-size:17px;line-height:1.72}
-.sacred-space-copy>p:not(.eyebrow)+p{margin-top:18px}
+.sacred-space-copy>p:not(.eyebrow){font-size:16.5px;line-height:1.68}
+.sacred-space-copy>p:not(.eyebrow)+p{margin-top:14px}
+.sacred-space-copy .sacred-space-emphasis{
+  margin-top:25px;
+  padding:2px 0 2px 20px;
+  border-left:1px solid var(--gold);
+  font-family:Georgia,serif;
+  font-style:italic;
+  color:var(--red);
+}
+
+.virtual-steps{
+  display:grid;
+  grid-template-columns:minmax(260px,.7fr) minmax(0,1.3fr);
+  gap:clamp(50px,10vw,150px);
+  padding:clamp(96px,12vw,164px) clamp(24px,8vw,124px);
+  background:var(--ivory);
+}
+.virtual-steps-heading{max-width:460px}
+.virtual-steps-heading h2{margin:16px 0 0;font-size:clamp(44px,5.5vw,76px);line-height:.98;text-wrap:balance}
+.virtual-steps ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--gold)}
+.virtual-steps li{display:grid;grid-template-columns:46px 1fr;gap:20px;padding:26px 0 30px;border-bottom:1px solid color-mix(in srgb,var(--gold) 65%,transparent)}
+.virtual-steps li>span{padding-top:7px;color:var(--gold);font:11px/1 Arial,sans-serif;letter-spacing:.12em}
+.virtual-steps h3{margin:0 0 8px;font-size:clamp(25px,2.4vw,34px)}
+.virtual-steps li p{max-width:540px;margin:0;line-height:1.62}
 
 .unique-journey{
-  position:relative;
-  isolation:isolate;
+  display:grid;
+  grid-template-columns:minmax(320px,.82fr) minmax(0,1.18fr);
+  min-height:780px;
   overflow:hidden;
-  padding:clamp(104px,13vw,178px) 24px;
-  background:linear-gradient(150deg,color-mix(in srgb,var(--sage) 28%,var(--ivory)),var(--ivory) 62%,color-mix(in srgb,var(--rose) 13%,var(--ivory)));
-  text-align:center;
+  background:#100b08;
+  color:var(--ivory);
 }
-.unique-journey::before{
+.unique-journey-photo{position:relative;min-height:780px;overflow:hidden}
+.unique-journey-photo::after{
   content:'';
   position:absolute;
-  z-index:-1;
-  width:min(700px,88vw);
-  aspect-ratio:1;
-  left:50%;top:50%;
-  transform:translate(-50%,-50%);
-  background:url('/images/celestial-orbit.png') center/contain no-repeat;
-  opacity:.055;
+  inset:0;
+  background:linear-gradient(90deg,transparent 72%,#100b08 100%);
+  pointer-events:none;
 }
-.unique-journey h2{max-width:920px;margin-inline:auto}
-.unique-journey>div{max-width:680px;margin:0 auto}
-.unique-journey>div p{font:18px/1.72 Georgia,serif}
-.unique-journey>div p+p{margin-top:20px}
-.unique-journey .unique-closing{margin-top:34px;color:var(--red);font-size:clamp(23px,2.3vw,30px);font-style:italic}
+.unique-journey-photo img{object-fit:cover;object-position:center}
+.unique-journey-copy{max-width:720px;align-self:center;padding:clamp(72px,9vw,130px) clamp(24px,8vw,118px) clamp(72px,9vw,130px) clamp(42px,6vw,92px)}
+.unique-journey .eyebrow{color:var(--gold)}
+.unique-journey h2{margin:16px 0 34px;color:var(--ivory)}
+.unique-journey-copy>p:not(.eyebrow){font:17px/1.72 Georgia,serif;color:color-mix(in srgb,var(--ivory) 88%,transparent)}
+.unique-journey-copy>p:not(.eyebrow)+p{margin-top:18px}
+.unique-journey .unique-closing{margin-top:30px;color:var(--rose);font-size:clamp(22px,2.1vw,29px);font-style:italic}
+.unique-journey .unique-last{color:var(--gold);font-style:italic}
 
 .temple-integration{
   display:grid;
@@ -1282,7 +1315,8 @@ form>.button{margin-top:32px}
   padding:clamp(96px,11vw,152px) clamp(24px,8vw,124px);
 }
 .temple-integration-intro{max-width:650px}
-.temple-integration-intro>p:last-child{max-width:580px;font:18px/1.7 Georgia,serif}
+.temple-integration-intro>p:not(.eyebrow){max-width:580px;font:18px/1.7 Georgia,serif}
+.temple-integration-intro>p:not(.eyebrow)+p{margin-top:14px}
 .integration-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--gold);align-self:center}
 .integration-list li{
   display:grid;
@@ -1293,7 +1327,7 @@ form>.button{margin-top:32px}
   border-bottom:1px solid color-mix(in srgb,var(--gold) 66%,transparent);
   font:clamp(20px,2vw,27px)/1.3 'Romans Story',Georgia,serif;
 }
-.integration-list span{color:var(--gold);font:12px/1 Arial,sans-serif}
+.integration-list span{color:var(--gold);font:11px/1 Arial,sans-serif;letter-spacing:.12em}
 .integration-closing{
   grid-column:1/-1;
   max-width:720px;
@@ -1326,6 +1360,7 @@ form>.button{margin-top:32px}
 @media(max-width:850px){
   .inner-temple-page .inner-temple-hero-copy{padding:64px 24px 76px}
   .inner-temple-page .inner-temple-subheading{font-size:18px}
+  .inner-temple-page .virtual-positioning{font-size:15.5px}
   .temple-introduction{padding-inline:24px}
   .inner-temple-page .experience-flow{grid-template-columns:1fr;padding:0 24px 90px;gap:0}
   .inner-temple-page .experience-flow article,
@@ -1333,9 +1368,14 @@ form>.button{margin-top:32px}
   .inner-temple-page .experience-flow article:last-child{border-bottom:1px solid var(--gold)}
   .inner-temple-page .experience-flow p{max-width:36ch}
   .sacred-space{grid-template-columns:1fr;padding:80px 24px;gap:54px}
-  .sacred-space-photo{min-height:520px;border-radius:210px 210px 18px 18px}
+  .sacred-space-photo{width:100%;min-height:0;border-radius:2px 54px 2px 2px}
   .sacred-space-copy h2,.unique-journey h2,.temple-integration h2,.temple-philosophy h2{font-size:clamp(38px,11vw,54px)}
-  .unique-journey{padding:96px 24px}
+  .virtual-steps{grid-template-columns:1fr;padding:90px 24px;gap:48px}
+  .virtual-steps-heading h2{font-size:clamp(38px,11vw,54px)}
+  .unique-journey{grid-template-columns:1fr;min-height:0}
+  .unique-journey-photo{min-height:620px}
+  .unique-journey-photo::after{background:linear-gradient(0deg,#100b08 0%,transparent 24%)}
+  .unique-journey-copy{padding:74px 24px 96px}
   .temple-integration{grid-template-columns:1fr;padding:88px 24px;gap:48px}
   .integration-closing{grid-column:auto;margin-top:12px;text-align:left}
   .temple-philosophy{padding:100px 24px}
@@ -1343,8 +1383,8 @@ form>.button{margin-top:32px}
 
 @media(max-width:380px){
   .inner-temple-page .inner-temple-hero-copy{padding-top:56px}
-  .sacred-space-photo{min-height:440px}
   .sacred-space-copy>p:not(.eyebrow),.temple-philosophy>p:not(.eyebrow){font-size:16px}
+  .unique-journey-photo{min-height:540px}
   .integration-list li{font-size:20px}
 }
 
