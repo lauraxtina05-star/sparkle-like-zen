@@ -1177,6 +1177,177 @@ form>.button{margin-top:32px}
   .sparkle-page .page-hero-image::after{top:9%;left:10%}
 }
 
+/* ===========================================================================
+   Inner Temple — long-form editorial experience
+   =========================================================================== */
+.inner-temple-page{background:var(--ivory)}
+.inner-temple-page .inner-temple-hero-copy{max-width:680px}
+.inner-temple-page .inner-temple-subheading{
+  max-width:32ch;
+  margin-top:20px;
+  font:clamp(18px,1.8vw,23px)/1.55 Georgia,serif;
+  text-wrap:balance;
+}
+.temple-introduction{
+  max-width:700px;
+  margin:0 auto;
+  padding:clamp(84px,10vw,136px) 24px clamp(68px,8vw,104px);
+}
+.temple-introduction p{
+  margin:0;
+  font:clamp(18px,1.7vw,22px)/1.72 Georgia,serif;
+}
+.temple-introduction p+p{margin-top:24px}
+.temple-introduction p:nth-child(2){color:var(--red);font-size:clamp(22px,2.2vw,29px);line-height:1.5}
+
+/* Keep the familiar four-part journey, but treat it as an editorial sequence
+   instead of a row of large cards. */
+.inner-temple-page .experience-flow{
+  padding:0 clamp(24px,7vw,110px) clamp(92px,10vw,142px);
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(24px,4vw,58px);
+  align-items:start;
+}
+.inner-temple-page .experience-flow article,
+.inner-temple-page .experience-flow article:nth-of-type(even){
+  min-height:0;
+  padding:26px 0 0;
+  border:0;
+  border-top:1px solid var(--gold);
+  border-radius:0;
+  background:transparent;
+  transform:none;
+}
+.inner-temple-page .experience-flow i{display:none}
+.inner-temple-page .experience-flow h3{margin:10px 0 13px;font-size:clamp(26px,2.7vw,38px)}
+.inner-temple-page .experience-flow p{max-width:31ch;line-height:1.65}
+
+.sacred-space{
+  display:grid;
+  grid-template-columns:minmax(320px,.9fr) minmax(0,1.1fr);
+  gap:clamp(52px,8vw,124px);
+  align-items:center;
+  padding:clamp(88px,10vw,142px) clamp(24px,8vw,124px);
+  background:linear-gradient(145deg,color-mix(in srgb,var(--rose) 20%,var(--ivory)),var(--ivory) 58%);
+}
+.sacred-space-photo{
+  position:relative;
+  min-height:clamp(560px,64vw,760px);
+  overflow:hidden;
+  border-radius:48% 48% 20px 20px / 25% 25% 20px 20px;
+}
+.sacred-space-photo img{object-fit:cover;object-position:center}
+.sacred-space-copy{max-width:680px}
+.sacred-space-copy h2,
+.unique-journey h2,
+.temple-integration h2,
+.temple-philosophy h2{
+  margin:16px 0 28px;
+  font-size:clamp(44px,6vw,82px);
+  line-height:.98;
+  text-wrap:balance;
+}
+.sacred-space-copy>p:not(.eyebrow){font-size:17px;line-height:1.72}
+.sacred-space-copy>p:not(.eyebrow)+p{margin-top:18px}
+
+.unique-journey{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding:clamp(104px,13vw,178px) 24px;
+  background:linear-gradient(150deg,color-mix(in srgb,var(--sage) 28%,var(--ivory)),var(--ivory) 62%,color-mix(in srgb,var(--rose) 13%,var(--ivory)));
+  text-align:center;
+}
+.unique-journey::before{
+  content:'';
+  position:absolute;
+  z-index:-1;
+  width:min(700px,88vw);
+  aspect-ratio:1;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  background:url('/images/celestial-orbit.png') center/contain no-repeat;
+  opacity:.055;
+}
+.unique-journey h2{max-width:920px;margin-inline:auto}
+.unique-journey>div{max-width:680px;margin:0 auto}
+.unique-journey>div p{font:18px/1.72 Georgia,serif}
+.unique-journey>div p+p{margin-top:20px}
+.unique-journey .unique-closing{margin-top:34px;color:var(--red);font-size:clamp(23px,2.3vw,30px);font-style:italic}
+
+.temple-integration{
+  display:grid;
+  grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
+  gap:clamp(52px,9vw,140px);
+  padding:clamp(96px,11vw,152px) clamp(24px,8vw,124px);
+}
+.temple-integration-intro{max-width:650px}
+.temple-integration-intro>p:last-child{max-width:580px;font:18px/1.7 Georgia,serif}
+.integration-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--gold);align-self:center}
+.integration-list li{
+  display:grid;
+  grid-template-columns:24px 1fr;
+  gap:14px;
+  align-items:center;
+  padding:23px 0;
+  border-bottom:1px solid color-mix(in srgb,var(--gold) 66%,transparent);
+  font:clamp(20px,2vw,27px)/1.3 'Romans Story',Georgia,serif;
+}
+.integration-list span{color:var(--gold);font:12px/1 Arial,sans-serif}
+.integration-closing{
+  grid-column:1/-1;
+  max-width:720px;
+  margin:clamp(48px,7vw,78px) auto 0;
+  text-align:center;
+  font:italic clamp(20px,2vw,27px)/1.6 Georgia,serif;
+  color:var(--red);
+}
+
+.temple-philosophy{
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  padding:clamp(108px,13vw,178px) 24px;
+  background:linear-gradient(165deg,color-mix(in srgb,var(--sage) 34%,var(--ivory)),var(--ivory));
+  border-block:1px solid color-mix(in srgb,var(--gold) 44%,transparent);
+}
+.temple-philosophy::after{
+  content:'✦';
+  display:block;
+  margin:42px auto 0;
+  color:var(--gold);
+  font-size:15px;
+}
+.temple-philosophy h2{max-width:900px;margin-inline:auto}
+.temple-philosophy>p:not(.eyebrow){max-width:650px;margin:0 auto;font:18px/1.7 Georgia,serif}
+.temple-philosophy>p:not(.eyebrow)+p{margin-top:12px}
+.temple-philosophy .temple-philosophy-emphasis{padding-top:20px;font-size:clamp(22px,2.4vw,31px);font-style:italic;color:var(--red)}
+
+@media(max-width:850px){
+  .inner-temple-page .inner-temple-hero-copy{padding:64px 24px 76px}
+  .inner-temple-page .inner-temple-subheading{font-size:18px}
+  .temple-introduction{padding-inline:24px}
+  .inner-temple-page .experience-flow{grid-template-columns:1fr;padding:0 24px 90px;gap:0}
+  .inner-temple-page .experience-flow article,
+  .inner-temple-page .experience-flow article:nth-of-type(even){padding:24px 0 27px;border-radius:0}
+  .inner-temple-page .experience-flow article:last-child{border-bottom:1px solid var(--gold)}
+  .inner-temple-page .experience-flow p{max-width:36ch}
+  .sacred-space{grid-template-columns:1fr;padding:80px 24px;gap:54px}
+  .sacred-space-photo{min-height:520px;border-radius:210px 210px 18px 18px}
+  .sacred-space-copy h2,.unique-journey h2,.temple-integration h2,.temple-philosophy h2{font-size:clamp(38px,11vw,54px)}
+  .unique-journey{padding:96px 24px}
+  .temple-integration{grid-template-columns:1fr;padding:88px 24px;gap:48px}
+  .integration-closing{grid-column:auto;margin-top:12px;text-align:left}
+  .temple-philosophy{padding:100px 24px}
+}
+
+@media(max-width:380px){
+  .inner-temple-page .inner-temple-hero-copy{padding-top:56px}
+  .sacred-space-photo{min-height:440px}
+  .sacred-space-copy>p:not(.eyebrow),.temple-philosophy>p:not(.eyebrow){font-size:16px}
+  .integration-list li{font-size:20px}
+}
+
 /* Inner Temple booking: an open editorial section, without an extra card. */
 .inner-temple-booking{
   position:relative;
