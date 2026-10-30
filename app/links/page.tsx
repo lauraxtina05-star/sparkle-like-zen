@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 import Image from 'next/image';
-import {CalBookingButton, calEvents} from '../cal-booking';
+import {CalBookingButton} from '../cal-booking';
 
 export const metadata:Metadata={
   title:'Connect | Sparkle Like Zen',
@@ -26,7 +26,7 @@ export default function LinksPage(){return <main className="links-page">
 
     <nav className="links-primary" aria-label="Sparkle Like Zen links">
       <a className="links-feature links-feature-main" href="/private-work"><span>Explore The Inner Temple</span><ArrowIcon/></a>
-      <CalBookingButton event={calEvents.innerTemple} className="links-feature links-feature-book"><span>Book The Inner Temple</span><ArrowIcon/></CalBookingButton>
+      <CalBookingButton event="inner-temple" className="links-feature links-feature-book"><span>Book The Inner Temple</span><ArrowIcon/></CalBookingButton>
 
       <div className="links-editorial">
         <a href="/circles-events"><span>Circles + Events</span><ArrowIcon/></a>
