@@ -1,6 +1,7 @@
 'use client';
 
 import {useEffect, useState} from 'react';
+import {createPortal} from 'react-dom';
 
 /*
   Cal.com booking for Sparkle Like Zen.
@@ -12,6 +13,10 @@ import {useEffect, useState} from 'react';
     <CalBookingButton event="full-moon-circle">Reserve your spot</CalBookingButton>
     <CalInlineBooking event="full-moon-circle" label="Book the Full Moon Circle"/>
 
+  Current events: "inner-temple" and "connection-call".
+  Pass the slug as a plain string. (Values exported from this 'use client'
+  file come through as undefined in server pages, so don't share constants here.)
+
   Payments for paid events are set up inside Cal (Stripe app on the event type).
 
   The booking page is shown in a frame. This needs no Cal script, so there is
@@ -19,11 +24,6 @@ import {useEffect, useState} from 'react';
 */
 
 const calUser = 'zenaida-duarte-rgkmmm';
-
-export const calEvents = {
-  innerTemple: 'inner-temple',
-  connectionCall: 'connection-call',
-} as const;
 
 export function calUrl(event: string) {
   return `https://cal.com/${calUser}/${event}`;
@@ -51,7 +51,7 @@ export function CalBookingButton({event, children, className = 'button button-ac
 
   return <>
     <button type="button" className={className} onClick={() => setOpen(true)}>{children}</button>
-    {open && <div
+    {open && createPortal(<div
       role="dialog"
       aria-modal="true"
       aria-label="Booking calendar"
@@ -67,7 +67,7 @@ export function CalBookingButton({event, children, className = 'button button-ac
           style={{position: 'absolute', top: 8, left: 8, width: 36, height: 36, borderRadius: '50%', border: 0, background: '#f4e8d2', color: '#06100a', fontSize: 20, lineHeight: '36px', cursor: 'pointer'}}
         >×</button>
       </div>
-    </div>}
+    </div>, document.body)}
   </>;
 }
 
