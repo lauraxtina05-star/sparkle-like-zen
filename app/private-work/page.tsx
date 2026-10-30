@@ -2,7 +2,7 @@ import Image from 'next/image';
 import {Footer, Header} from '../components';
 import {InquiryForm} from '../inquiry-form';
 import {ReflectionsSlider} from '../reflections-slider';
-import {CalBookingButton, CalInlineBooking, calEvents} from '../cal-booking';
+import {CalBookingButton, CalInlineBooking} from '../cal-booking';
 
 export default function InnerTemple(){
   return <main className="inner-temple-page">
@@ -15,7 +15,7 @@ export default function InnerTemple(){
         <p className="inner-temple-subheading">An intimate journey of energy healing, prayer, and sacred connection.</p>
         <p className="virtual-positioning">A 60-minute virtual experience, received from the comfort of your own space.</p>
         <div className="session-price"><b>Virtual · 60 minutes · $111</b><span>Mobile available by inquiry. Pricing varies by location and travel.</span></div>
-        <div className="actions"><CalBookingButton event={calEvents.innerTemple}>Book Your Session</CalBookingButton><a className="text-link" href="#questions">Have a Question? →</a></div>
+        <div className="actions"><CalBookingButton event="inner-temple">Book Your Session</CalBookingButton><a className="text-link" href="#questions">Have a Question? →</a></div>
       </div>
       <div className="page-hero-image image-reveal"><Image src="/images/reiki-treatment.JPG" alt="Zen supporting a client during The Inner Temple" fill priority sizes="(max-width:850px) 100vw, 48vw"/></div>
     </section>
@@ -82,9 +82,9 @@ export default function InnerTemple(){
 
     <section className="temple-philosophy reveal"><p className="eyebrow">The Inner Temple</p><h2>Your Inner Temple is already within you.</h2><p>You do not have to travel anywhere to find it.</p><p>You do not have to step into someone else’s sacred space.</p><p>The Inner Temple is an invitation to create that space within your own.</p><p>To get quiet enough to listen.</p><p>To reconnect with what is already present.</p><p>To remember that your own inner knowing is still there.</p><p className="temple-philosophy-emphasis">A sacred space within you, waiting to be rediscovered.</p></section>
 
-    <section className="inner-temple-booking" id="book-inner-temple"><div className="booking-intro"><p className="eyebrow">Ready when you are</p><h2>Book your Inner Temple session</h2><p>Choose a time that feels right for you and complete your booking below.</p></div><CalInlineBooking event={calEvents.innerTemple} label="Book an Inner Temple session"/></section>
+    <section className="inner-temple-booking" id="book-inner-temple"><div className="booking-intro"><p className="eyebrow">Ready when you are</p><h2>Book your Inner Temple session</h2><p>Choose a time that feels right for you and complete your booking below.</p></div><CalInlineBooking event="inner-temple" label="Book an Inner Temple session"/></section>
 
-    <section className="inquiry inquiry-vertical inquiry-questions" id="questions"><div className="reveal"><p className="eyebrow">Have a question?</p><h2>Not sure yet? Reach out.</h2><p>If you have a question about The Inner Temple or want to make sure it feels like the right fit, send me a note and I’ll be happy to help.</p><p>Rather talk it through? Book a connection call and we’ll see if The Inner Temple is right for you.</p><div className="actions"><CalBookingButton event={calEvents.connectionCall} className="button">Book a Connection Call</CalBookingButton></div></div><InquiryForm/></section>
+    <section className="inquiry inquiry-vertical inquiry-questions" id="questions"><div className="reveal"><p className="eyebrow">Have a question?</p><h2>Not sure yet? Reach out.</h2><p>If you have a question about The Inner Temple or want to make sure it feels like the right fit, send me a note and I’ll be happy to help.</p><p>Rather talk it through? Book a connection call and we’ll see if The Inner Temple is right for you.</p><div className="actions"><CalBookingButton event="connection-call" className="button">Book a Connection Call</CalBookingButton></div></div><InquiryForm/></section>
     <Footer/>
   </main>;
 }
