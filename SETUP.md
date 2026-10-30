@@ -7,3 +7,12 @@ The site is ready for the existing business integrations. Replace only these pla
 - `https://YOUR-MAILERLITE-FORM-URL` for circle and newsletter signup.
 
 Do not place API keys, account passwords, or other credentials in the repository. These forms require only the public submission URLs supplied by Formspree and MailerLite.
+
+## Booking (Cal.com)
+
+All booking runs through Cal.com (account: zenaida-duarte-rgkmmm). Event slugs live in `app/cal-booking.tsx` under `calEvents`:
+
+- `inner-temple` for The Inner Temple ($111 session)
+- `connection-call` for the connection call
+
+To add a paid event, create it in Cal, turn on payments for that event type, then use `<CalBookingButton event="your-slug">` or `<CalInlineBooking event="your-slug" label="..."/>`.
