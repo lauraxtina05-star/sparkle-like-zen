@@ -35,6 +35,7 @@ const uiConfig = {
 type CalNamespace = (...args: unknown[]) => void;
 type CalApi = ((...args: unknown[]) => void) & {
   loaded?: boolean;
+  instance?: unknown;
   ns?: Record<string, CalNamespace>;
   q?: unknown[];
   config?: Record<string, unknown>;
@@ -48,108 +49,98 @@ export function calUrl(event: string) {
   return `https://cal.com/${calUser}/${event}`;
 }
 
-/* Cal's official loader snippet, wrapped so it only runs in the browser. */
-function ensureCal(): CalApi {
-  if (!window.Cal) {
-    (function (C: Window & {Cal?: CalApi}, A: string, L: string) {
-      const p = function (a: {q: unknown[]}, ar: unknown) { a.q.push(ar); };
-      const d = C.document;
-      C.Cal = C.Cal || (function (...ar: unknown[]) {
-        const cal = C.Cal as CalApi;
-        if (!cal.loaded) {
-          cal.ns = {};
-          cal.q = cal.q || [];
-          const script = d.createElement('script');
-          script.src = A;
-          d.head.appendChild(script);
-          cal.loaded = true;
-        }
-        if (ar[0] === L) {
-          const api = function (...args: unknown[]) { p(api as unknown as {q: unknown[]}, args); } as unknown as CalNamespace & {q: unknown[]};
-          const namespace = ar[1];
-          api.q = api.q || [];
-          if (typeof namespace === 'string') {
-            cal.ns![namespace] = cal.ns![namespace] || api;
-            p(cal.ns![namespace] as unknown as {q: unknown[]}, ar);
-            p(cal as unknown as {q: unknown[]}, ['initNamespace', namespace]);
-          } else p(cal as unknown as {q: unknown[]}, ar);
-          return;
-        }
-        p(cal as unknown as {q: unknown[]}, ar);
-      } as CalApi);
-    })(window, embedScript, 'init');
-  }
-  return window.Cal!;
+/* Cal's official loader snippet. It creates a placeholder that loads Cal's script. */
+function installCalLoader() {
+  if (window.Cal) return;
+  (function (C: Window & {Cal?: CalApi}, A: string, L: string) {
+    const p = function (a: {q: unknown[]}, ar: unknown) { a.q.push(ar); };
+    const d = C.document;
+    C.Cal = C.Cal || (function (...ar: unknown[]) {
+      const cal = C.Cal as CalApi;
+      if (!cal.loaded) {
+        cal.ns = {};
+        cal.q = cal.q || [];
+        const script = d.createElement('script');
+        script.src = A;
+        d.head.appendChild(script);
+        cal.loaded = true;
+      }
+      if (ar[0] === L) {
+        const api = function (...args: unknown[]) { p(api as unknown as {q: unknown[]}, args); } as unknown as CalNamespace & {q: unknown[]};
+        const namespace = ar[1];
+        api.q = api.q || [];
+        if (typeof namespace === 'string') {
+          cal.ns![namespace] = cal.ns![namespace] || api;
+          p(cal.ns![namespace] as unknown as {q: unknown[]}, ar);
+          p(cal as unknown as {q: unknown[]}, ['initNamespace', namespace]);
+        } else p(cal as unknown as {q: unknown[]}, ar);
+        return;
+      }
+      p(cal as unknown as {q: unknown[]}, ar);
+    } as CalApi);
+  })(window, embedScript, 'init');
+}
+
+let calPromise: Promise<CalApi> | undefined;
+
+/*
+  Resolves once the real Cal script is running.
+  We only talk to Cal after this, because calls queued on the placeholder
+  during start-up were getting dropped.
+*/
+function calReady(): Promise<CalApi> {
+  if (calPromise) return calPromise;
+  calPromise = new Promise<CalApi>((resolve, reject) => {
+    installCalLoader();
+    if (!window.Cal!.instance) window.Cal!('init', {origin: calOrigin});
+    const started = Date.now();
+    const check = () => {
+      if (window.Cal?.instance) resolve(window.Cal);
+      else if (Date.now() - started > 12000) reject(new Error('Cal did not load'));
+      else setTimeout(check, 100);
+    };
+    check();
+  }).catch((error) => {
+    calPromise = undefined;
+    throw error;
+  });
+  return calPromise;
 }
 
 const styled = new Set<string>();
 
-/* Returns the Cal namespace for an event, or undefined if Cal isn't ready. Never throws. */
-function getNamespace(event: string): CalNamespace | undefined {
-  try {
-    const Cal = ensureCal();
-    if (typeof Cal.ns?.[event] !== 'function') {
-      Cal('init', event, {origin: calOrigin});
-      Cal.config = Cal.config || {};
-      Cal.config.forwardQueryParams = true;
-    }
-    const ns = window.Cal?.ns?.[event];
-    if (typeof ns !== 'function') return undefined;
-    if (!styled.has(event)) {
-      styled.add(event);
-      ns('ui', uiConfig);
-    }
-    return ns;
-  } catch {
-    return undefined;
+/* The Cal namespace for one event. Call only after calReady() resolves. */
+function calNamespace(Cal: CalApi, event: string): CalNamespace {
+  if (typeof Cal.ns?.[event] !== 'function') {
+    Cal('init', event, {origin: calOrigin});
+    Cal.config = Cal.config || {};
+    Cal.config.forwardQueryParams = true;
   }
-}
-
-/* Runs `run` once Cal is ready for this event, retrying for up to ~10 seconds. */
-function whenReady(event: string, run: (ns: CalNamespace) => void, onGiveUp?: () => void) {
-  let cancelled = false;
-  let tries = 0;
-  const attempt = () => {
-    if (cancelled) return;
-    const ns = getNamespace(event);
-    if (ns) {
-      try { run(ns); } catch { onGiveUp?.(); }
-    } else if (tries++ < 65) {
-      setTimeout(attempt, 150);
-    } else {
-      onGiveUp?.();
-    }
-  };
-  attempt();
-  return () => { cancelled = true; };
-}
-
-function useEmbedFailure() {
-  const [failed, setFailed] = useState(false);
-  useEffect(() => {
-    const script = document.querySelector(`script[src="${embedScript}"]`);
-    const onError = () => setFailed(true);
-    script?.addEventListener('error', onError);
-    return () => script?.removeEventListener('error', onError);
-  }, []);
-  return [failed, setFailed] as const;
+  const ns = Cal.ns?.[event];
+  if (typeof ns !== 'function') throw new Error(`Cal namespace ${event} unavailable`);
+  if (!styled.has(event)) {
+    styled.add(event);
+    ns('ui', uiConfig);
+  }
+  return ns;
 }
 
 /* A button that opens the Cal booking calendar as a pop-up. */
 export function CalBookingButton({event, children, className = 'button button-accent'}: {event: string; children: React.ReactNode; className?: string}) {
-  const [failed] = useEmbedFailure();
+  const [failed, setFailed] = useState(false);
 
-  // Warm up Cal so the pop-up opens fast.
-  useEffect(() => whenReady(event, () => {}), [event]);
+  // Load Cal in the background so the pop-up opens instantly.
+  useEffect(() => {
+    let active = true;
+    calReady().then((Cal) => calNamespace(Cal, event)).catch(() => { if (active) setFailed(true); });
+    return () => { active = false; };
+  }, [event]);
 
   function openBooking() {
-    const ns = failed ? undefined : getNamespace(event);
-    if (!ns) {
-      window.open(calUrl(event), '_blank', 'noopener');
-      return;
-    }
+    const Cal = window.Cal;
     try {
-      ns('modal', {calLink: `${calUser}/${event}`, config: layoutConfig});
+      if (!Cal?.instance) throw new Error('Cal not ready');
+      calNamespace(Cal, event)('modal', {calLink: `${calUser}/${event}`, config: layoutConfig});
     } catch {
       window.open(calUrl(event), '_blank', 'noopener');
     }
@@ -157,24 +148,25 @@ export function CalBookingButton({event, children, className = 'button button-ac
 
   return <>
     <button type="button" className={className} onClick={openBooking}>{children}</button>
-    {failed && <span className="calendly-popup-fallback" role="status">The calendar didn’t open here. <a href={calUrl(event)} target="_blank" rel="noopener noreferrer">Open the booking calendar</a></span>}
+    {failed && <span className="calendly-popup-fallback" role="status">The calendar didn’t load here. <a href={calUrl(event)} target="_blank" rel="noopener noreferrer">Open the booking calendar</a></span>}
   </>;
 }
 
 /* The Cal booking calendar embedded right on the page. */
 export function CalInlineBooking({event, label}: {event: string; label: string}) {
   const container = useRef<HTMLDivElement>(null);
-  const [failed, setFailed] = useEmbedFailure();
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    const el = container.current;
-    if (!el || el.dataset.calMounted) return;
-    return whenReady(event, (ns) => {
-      if (el.dataset.calMounted) return;
+    let active = true;
+    calReady().then((Cal) => {
+      const el = container.current;
+      if (!active || !el || el.dataset.calMounted) return;
       el.dataset.calMounted = 'true';
-      ns('inline', {elementOrSelector: el, config: layoutConfig, calLink: `${calUser}/${event}`});
-    }, () => setFailed(true));
-  }, [event, setFailed]);
+      calNamespace(Cal, event)('inline', {elementOrSelector: el, config: layoutConfig, calLink: `${calUser}/${event}`});
+    }).catch(() => { if (active) setFailed(true); });
+    return () => { active = false; };
+  }, [event]);
 
   return <>
     <div ref={container} className="inner-temple-calendar" style={{height: 'auto', minHeight: 560, overflow: 'visible'}} aria-label={label} />
